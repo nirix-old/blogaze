@@ -2,7 +2,7 @@
 <?r @posts.each do |post| ?>
   <li class="post">
     <h2>#{a post.title, '/' + Time.at(post.created_at).year.to_s + '/' + Time.at(post.created_at).month.to_s + '/' + post.slug}</h2>
-    #{post.body}
+    #{maruku post.body}
   </li>
 <?r end ?>
 </ul>

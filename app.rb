@@ -6,6 +6,9 @@
 require 'rubygems'
 require 'ramaze'
 
+# Get routes
+require __DIR__('config/routes')
+
 # Make sure that Ramaze knows where you are
 Ramaze.options.roots = [__DIR__]
 
