@@ -10,7 +10,7 @@ class User < Sequel::Model
     
     # Username
     validates_unique :username
-    validates_min_length 6, :username, :message => 'must be at least 6 characters'
+    validates_min_length 4, :username, :message => 'must be at least 4 characters' if new?
     validates_presence :username, :message => 'can\'t be empty'
     
     # Password
@@ -24,6 +24,7 @@ class User < Sequel::Model
   
   def before_create
     self.password = BCrypt::Password.create(self.password, :cost => 10)
+    self.group_id = 3
   end
   
   def before_save
