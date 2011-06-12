@@ -1,4 +1,6 @@
 class Post < Sequel::Model
+  plugin :validation_helpers
+  
   many_to_one :user
   
   def validate
@@ -7,7 +9,12 @@ class Post < Sequel::Model
   end
   
   def before_create
-    self.created_at ||= Time.now.to_i
     super
+    self.created_at = Time.now.to_i
+    self.published_at = Time.now.to_i
+  end
+  
+  def before_save
+    self.updated_at = Time.now.to_i
   end
 end

@@ -8,3 +8,5 @@ Ramaze::Route['view post'] = lambda do |path, request|
     return "/posts/view/#{$1}"
   end
 end
+
+Ramaze::Route['/register'] = '/users/new'

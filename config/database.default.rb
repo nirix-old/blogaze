@@ -6,7 +6,5 @@ DB = Sequel.connect(
   :database => '',
   :test     => true,
   :encoding => 'utf8',
-  :logger   => Ramaze::Logger::RotatingInformer.new(
-    __DIR__("../log/database/dev"), '%d-%m-%Y.log'
-  )
+  :charset => 'utf8_general_ci'
 )

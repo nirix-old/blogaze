@@ -1,0 +1,22 @@
+<div id="page_content">
+  <h2 id="page-title">Register</h2>
+  <div class="content">
+    <?r if @user.errors.count > 0 ?>
+      <div class="message error">
+        <?r @user.errors.each do |k, v| ?>
+          #{k} #{v.first}<br />
+        <?r end ?>
+      </div>
+    <?r end ?>
+    <div class="register-form">
+    #{
+      form_for(@user, :method => :post, :action => '/users/create') do |f|
+        f.input_text 'Username', :username
+        f.input_password 'Password', :password
+        f.input_text 'Email', :email
+        f.submit "Create Account", :class => "submit-btn"
+      end
+    }
+    </div>
+  </div>
+</div>

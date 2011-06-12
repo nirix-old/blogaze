@@ -1,5 +1,6 @@
 @import url('reset.css');
 
+/* ==========# Body and such #==========*/
 body {
   background: #eee;
   font-family: arial;
@@ -10,6 +11,7 @@ body {
   margin: 0 auto;
 }
 
+/* ==========# Header #==========*/
 #header {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -23,16 +25,8 @@ body {
   }
 }
 
+/* ==========# Posts #==========*/
 #post, .post {
-  border: 1px solid #ddd;
-  background: #fff;
-  
-  .title {
-    padding: 4px;
-    background: #6ba81e;
-    color: #fff;
-    font-weight: bold;
-  }
   .title a:link, .title a:visited, .title a:active, .title a:hover {
     color: #fff;
     text-decoration: none;
@@ -49,12 +43,63 @@ body {
     padding: 4px;
   }
 }
-.post {
+li.post {
   margin-bottom: 10px;
 }
 
+#post, .post, #page_content {
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+#post .title, .post .title, #page-title {
+  padding: 4px;
+  background: #6ba81e;
+  color: #fff;
+  font-weight: bold;
+}
+
+.content {
+  padding: 5px;
+}
+
+/* ==========# Footer #==========*/
 #footer {
   margin-top: 10px;
   text-align: center;
   font-size: 12px;
 }
+
+/* ==========# Forms and what not #==========*/
+.register-form {
+  width: 250px;
+  margin: 0 auto;
+  p {
+    padding: 2px;
+    
+    label {
+      width: 90px;
+      display: block;
+      float: left;
+      padding-top: 2px;
+      text-align: right;
+      margin-right: 5px;
+    }
+    
+    .submit-btn {
+      margin-left: 90px;
+    }
+  }
+}
+
+
+
+.message.error, .message.alert, .message.notice, .message.success, .message.info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
+.message.error, .message.alert {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
+.message.notice {background:#fff6bf;color:#514721;border-color:#ffd324;}
+.message.success {background:#e6efc2;color:#264409;border-color:#c6d880;}
+.message.info {background:#d5edf8;color:#205791;border-color:#92cae4;}
+.message.error a, .alert a {color:#8a1f11;}
+.message.notice a {color:#514721;}
+.message.success a {color:#264409;}
+.message.info a {color:#205791;}
