@@ -17,7 +17,7 @@ Go to the directory you have the Blogaze in
 1. Run `bundle install`, this should install the required gems.
 
 2. Setup the database in the `config/database.rb` file (rename database.default.rb)
-
+   
    `sequel -m migration mysql2://user:pass@localhost/database_name`
 
 3. Start Ramaze
