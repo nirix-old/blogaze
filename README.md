@@ -12,19 +12,17 @@ Install Ramaze
 
 `gem install ramaze`
 
-Go to the directory you have the Blogaze code in
+Go to the directory you have the Blogaze in
 
-1. Setup the database (this is for sqlite)
+1. Run `bundle install`, this should install the required gems.
 
-   `sequel -m migration sqlite://db/sqlite.db`
+2. Setup the database in the `config/database.rb` file (rename database.default.rb)
 
-2. Start Ramaze
+   `sequel -m migration mysql2://user:pass@localhost/database_name`
 
-  `ramaze start`
+3. Start Ramaze
 
-3. Optional but recommended
-
-  `sudo rm -rf /usr/bin/php` 
+  `ramaze start` unless you want to use something else, I recommend using Thin.
 
 Why
 ------
