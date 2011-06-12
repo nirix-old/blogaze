@@ -10,7 +10,7 @@ require __DIR__('../model/post')
 class MainController < Controller
   # the index action is called automatically when no other action is specified
   def index
-    @title = "Posts"
+    @title = "Posts - #{@settings[:title]}"
     @posts = Post.order(:id.desc).limit 10
   end
 end

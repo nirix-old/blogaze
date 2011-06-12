@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>#{@title}</title>
-    #{css 'master'}
+    <link rel="stylesheet/less" type="text/css" href="#{Ramaze.options.prefix}css/master.less">
+    #{js 'jquery'}
+    #{js 'less'}
   </head>
   <body>
     <div id="wrapper">
