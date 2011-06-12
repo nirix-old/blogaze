@@ -1,4 +1,6 @@
 class Post < Sequel::Model
+  many_to_one :user
+  
   def validate
     validates_presence [:title, :body, :user_id]
     validates_integer :user_id

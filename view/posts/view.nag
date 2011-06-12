@@ -1,4 +1,7 @@
 <div id="post">
   <h2 class="title">#{@post.title}</h2>
   #{maruku @post.body}
+  <div class="meta">
+    By #{@post.user.username}, <abbr title="#{Time.at(@post.published_at)}">#{@post.published_at.ago_in_words} ago</abbr>
+  </div>
 </div>

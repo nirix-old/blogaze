@@ -5,12 +5,19 @@
 
 require 'rubygems'
 require 'ramaze'
+require 'time-lord'
 
 # Get routes
 require __DIR__('config/routes')
 
 # Make sure that Ramaze knows where you are
 Ramaze.options.roots = [__DIR__]
+
+class Bignum
+  def ago_in_words
+    Time.at(self).ago_in_words.gsub(' ago', '')
+  end
+end
 
 # Initialize controllers and models
 require __DIR__('model/init')
