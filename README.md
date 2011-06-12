@@ -19,7 +19,7 @@ Go to the directory you have the Blogaze in
 2. Setup the database in the `config/database.rb` file (rename database.default.rb)
    
    `sequel -m migration mysql2://user:pass@localhost/database_name`
-
+   
 3. Start Ramaze
 
   `ramaze start` unless you want to use something else, I recommend using Thin.
