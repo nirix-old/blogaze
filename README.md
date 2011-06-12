@@ -6,23 +6,17 @@ Simple blog powered by the Ramaze ruby framework.
 Installation
 ------------
 
-**NOT COMPLETE**
+1. You'll need to install Ramaze, you can do so by running `gem install ramaze`, 
+   next you'll want to install the required gems, run `bundle install`, hopefully that works.
 
-Install Ramaze
+2. Now you need to setup the database, rename the `config/database.default.rb` to `config/database.rb` 
+   and set your database username, password, server and database name.
 
-`gem install ramaze`
-
-Go to the directory you have the Blogaze in
-
-1. Run `bundle install`, this should install the required gems.
-
-2. Setup the database in the `config/database.rb` file (rename database.default.rb)
+3. Now you need to create the tables and such with the Sequel migration thing:
    
-   `sequel -m migration mysql2://user:pass@localhost/database_name`
+   `sequel -m migration mysql2://user:pass@server/dbname`
    
-3. Start Ramaze
-
-  `ramaze start` unless you want to use something else, I recommend using Thin.
+4. Obviously you want to change the `user`, `pass`, `server` and `dbname` to the actual values.
 
 Why
 ------
