@@ -1,7 +1,16 @@
 # Here goes your database connection and options:
 require 'sequel'
 require 'sequel/extensions/inflector'
-DB = Sequel.sqlite("#{__DIR__}/../db/blog.sqlite")
+
+require __DIR__('../config/database.rb')
+
+# IMPORTANT, when running MySQL the engine should be set to InnoDB in order for foreign 
+# keys to work properly.
+if DB.adapter_scheme.to_s.include?('mysql')
+  Sequel::MySQL.default_engine = 'InnoDB'
+end
+
+#DB = Sequel.sqlite("#{__DIR__}/../db/blog.sqlite")
 
 Sequel.extension :pagination
 Sequel::Model.plugin :validation_class_methods
