@@ -29,7 +29,6 @@ Sequel.migration do
       primary_key :id
       String :username, :size=>255
       String :password, :size=>255
-      String :salt, :size=>255
       String :email, :size=>255
       String :group_id, :size=>255
     end
