@@ -3,13 +3,17 @@
   <head>
     <title>#{@title}</title>
     <link rel="stylesheet/less" type="text/css" href="#{Ramaze.options.prefix}css/master.less">
+    <link href="/css/print.css" media="print" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+    #{css 'ie'}
+    <![endif]-->
     #{js 'jquery'}
     #{js 'less'}
   </head>
   <body>
     <div id="wrapper">
       <header id="header">
-        <h1>#{@settings[:title]}</h1>
+        <h1><a href="/">#{@settings[:title]}</a></h1>
         <nav>
           <ul>
             <?r if session[:logged_in] ?>

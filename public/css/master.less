@@ -1,4 +1,4 @@
-@import url('reset.css');
+@import url('screen.css');
 
 /* ==========# Sexy stuffs #==========*/
 .textshadow (@color: #000) {
@@ -6,18 +6,17 @@
 }
 
 /* ==========# Body and such #==========*/
-body {
-  background: #eee;
-  font-family: arial;
+p, ul, ol {
+  margin-bottom: 4px;
 }
 
-a:link, a:active, a:visited {
-  color: #000;
-  text-decoration: underline;
+/* ==========# Body and such #==========*/
+body {
+  background: #eee;
 }
 
 #wrapper {
-  width: 900px;
+  width: 800px;
   margin: 0 auto;
 }
 
@@ -28,90 +27,103 @@ a:link, a:active, a:visited {
   background: #e33f1e;
   color: #fff;
   padding: 8px;
+  height: 36px;
+  .textshadow;
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
   
   h1 {
-    font-size: 25px;
     font-weight: bold;
-    .textshadow;
+    color: #fff;
+    margin: 0;
+    float: left;
+  }
+  
+  nav {
+    margin-top: 7px;
+    font-size: 15px;
+    float: right;
+    
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: inline;
+    }
   }
 }
 
-/* ==========# Posts #==========*/
-#post, .post {
-  .title a:link, .title a:visited, .title a:active, .title a:hover {
+/* ==========# Posts and Content #==========*/
+.content, .post-body {
+  padding: 5px;
+}
+
+#posts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post, #page_content {
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.post .title, #page-title {
+  background: #6ba81e;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px;
+  margin: 0;
+  line-height: 1;
+  font-size: 18px;
+  .textshadow;
+  
+  a {
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
   }
-  
-  p {
-    padding: 5px;
-  }
-  
+}
+
+.post {
   .meta {
     font-size: 12px;
     background: #d9d9d9;
     padding: 4px;
+    line-height: 1;
   }
 }
-li.post {
-  margin-bottom: 10px;
-}
 
-#post, .post, #page_content {
-  border: 1px solid #ddd;
-  background: #fff;
-}
-
-#post .title, .post .title, #page-title {
-  padding: 5px;
-  background: #6ba81e;
-  color: #fff;
-  font-weight: bold;
-  .textshadow;
-}
-
-.content {
-  padding: 5px;
-}
-
-/* ==========# Footer #==========*/
+/* ==========# Down under #==========*/
 #footer {
   margin-top: 10px;
   text-align: center;
   font-size: 12px;
 }
 
-/* ==========# Forms and what not #==========*/
+/* ==========# Forms #==========*/
+
 .register-form, .login-form {
   width: 250px;
   margin: 0 auto;
   p {
-    padding: 2px;
+    margin-bottom: 0;
     
     label {
       width: 90px;
       display: block;
       float: left;
-      padding-top: 2px;
       text-align: right;
+      padding-top: 8px;
       margin-right: 5px;
     }
     
     .submit-btn {
-      margin-left: 90px;
+      margin-left: 94px;
     }
   }
 }
-
-
-
-.message.error, .message.alert, .message.notice, .message.success, .message.info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
-.message.error, .message.alert {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
-.message.notice {background:#fff6bf;color:#514721;border-color:#ffd324;}
-.message.success {background:#e6efc2;color:#264409;border-color:#c6d880;}
-.message.info {background:#d5edf8;color:#205791;border-color:#92cae4;}
-.message.error a, .alert a {color:#8a1f11;}
-.message.notice a {color:#514721;}
-.message.success a {color:#264409;}
-.message.info a {color:#205791;}
