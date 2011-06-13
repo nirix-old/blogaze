@@ -14,3 +14,4 @@ Ramaze::Route['view post'] = lambda do |path, request|
 end
 
 Ramaze::Route['/register'] = '/users/new'
+Ramaze::Route['/login'] = '/sessions/new'

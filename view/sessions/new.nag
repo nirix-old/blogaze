@@ -1,0 +1,25 @@
+<div id="page_content">
+  <h2 id="page-title">Login</h2>
+  <div class="content">
+    <?r if @login_error ?>
+    <div class="message error">
+      Invalid username and/or password.
+    </div>
+    <?r end ?>
+    <div class="login-form">
+      <form action="#{Ramaze.options.prefix}sessions/create" method="post">
+        <p>
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" />
+        </p>
+        <p>
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </p>
+        <p>
+          <input type="submit" value="Login" class="submit-btn" />
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

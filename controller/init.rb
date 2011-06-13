@@ -27,6 +27,7 @@ end
 require __DIR__('main')
 require __DIR__('posts')
 require __DIR__('users')
+require __DIR__('sessions')
 
 # Admin controllers
 require __DIR__('admin/init')

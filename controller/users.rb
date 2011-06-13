@@ -16,7 +16,8 @@ class UsersController < Controller
     data = {
       :username => request[:username],
       :password => request[:password],
-      :email => request[:email]
+      :email => request[:email],
+      :group_id => 3
     }
     
     @user = User.new(data)

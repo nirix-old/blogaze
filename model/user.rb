@@ -30,11 +30,10 @@ class User < Sequel::Model
   end
   
   def before_create
-    self.password = BCrypt::Password.create(self.password, :cost => 10)
+    self.password = Digest::SHA1.hexdigest(self.password)
     self.group_id = 3
   end
   
   def before_save
-    #self.password = BCrypt::Password.create(self.password, :cost => 10)
   end
 end
