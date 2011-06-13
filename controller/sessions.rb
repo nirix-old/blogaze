@@ -1,6 +1,11 @@
-require 'bcrypt'
+#
+# Blogaze
+# Copyright (C) 2011 Jack Polgar
+#
+# Blogaze is released under the BSD 3-clause license.
+#
 
-class SessionsController < Controller
+class Sessions < Controller
   def new
   
   end
@@ -17,5 +22,11 @@ class SessionsController < Controller
       @login_error = true
       render_file 'view/sessions/new.nag'
     end
+  end
+  
+  def destroy
+    session.delete(:logged_in)
+    session.delete(:user_id)
+    redirect Ramaze.options.prefix
   end
 end

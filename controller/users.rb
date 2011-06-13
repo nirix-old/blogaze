@@ -5,7 +5,7 @@
 # Blogaze is released under the BSD 3-clause license.
 #
 
-class UsersController < Controller
+class Users < Controller
   helper :blue_form, :formatting
   
   def new

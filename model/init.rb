@@ -17,4 +17,5 @@ Sequel::Model.plugin :hook_class_methods
 
 # Here go your requires for models:
 require __DIR__('user')
-require __DIR__('post');
+require __DIR__('post')
+require __DIR__('group')

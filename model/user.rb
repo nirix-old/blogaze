@@ -5,12 +5,11 @@
 # Blogaze is released under the BSD 3-clause license.
 #
 
-require 'bcrypt'
-
 class User < Sequel::Model
   plugin :validation_helpers
   
   one_to_many :post
+  many_to_one :group
   
   def validate
     super

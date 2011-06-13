@@ -10,6 +10,15 @@
     <div id="wrapper">
       <header id="header">
         <h1>#{@settings[:title]}</h1>
+        <nav>
+          <ul>
+            <?r if session[:logged_in] ?>
+            <li><a href="/logout">Logout</a></li>
+            <?r else ?>
+            <li><a href="/login">Login</a></li>
+            <?r end ?>
+          </ul>
+        </nav>
       </header>
       <div id="page_wrapper">
         <div id="page">

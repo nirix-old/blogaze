@@ -13,9 +13,12 @@ class Controller < Ramaze::Controller
   def initialize
     super
     
-    # Get settings
-    #@settings = {:title => "Blogaze Dev"}
+    # Get user info
+    if session[:logged_in]
+      @userinfo = User[1]
+    end
     
+    # Get settings
     @settings = {}
     DB[:settings].all.each do |setting|
       @settings[setting[:setting].to_sym] = setting[:value]
