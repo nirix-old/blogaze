@@ -1,5 +1,9 @@
-#Ramaze::Route[/\/[0-9]+\/[0-9]+\/([\w\.\-]+)/] = '/posts/view/%s' #GOOD
-#Ramaze::Route[/([0-9]+)/([0-9]+)/([\w]+)/] = '/posts/view/%s' #BAD
+#
+# Blogaze
+# Copyright (C) 2011 Jack Polgar
+#
+# Blogaze is released under the BSD 3-clause license.
+#
 
 Ramaze::Route[/\/admin(.*)/] = '/admin%s'
 

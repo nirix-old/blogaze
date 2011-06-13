@@ -1,3 +1,10 @@
+#
+# Blogaze
+# Copyright (C) 2011 Jack Polgar
+#
+# Blogaze is released under the BSD 3-clause license.
+#
+
 require 'bcrypt'
 
 class User < Sequel::Model
@@ -28,6 +35,6 @@ class User < Sequel::Model
   end
   
   def before_save
-    self.password = BCrypt::Password.create(self.password, :cost => 10)
+    #self.password = BCrypt::Password.create(self.password, :cost => 10)
   end
 end

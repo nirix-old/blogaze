@@ -1,7 +1,9 @@
-# This file contains your application, it requires dependencies and necessary
-# parts of the application.
 #
-# It will be required from either `config.ru` or `start.rb`
+# Blogaze
+# Copyright (C) 2011 Jack Polgar
+#
+# Blogaze is released under the BSD 3-clause license.
+#
 
 require 'rubygems'
 require 'ramaze'

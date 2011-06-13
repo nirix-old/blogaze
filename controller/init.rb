@@ -1,5 +1,9 @@
-# Define a subclass of Ramaze::Controller holding your defaults for all
-# controllers
+#
+# Blogaze
+# Copyright (C) 2011 Jack Polgar
+#
+# Blogaze is released under the BSD 3-clause license.
+#
 
 class Controller < Ramaze::Controller
   layout :default

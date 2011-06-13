@@ -1,9 +1,9 @@
-# Default url mappings are:
-#  a controller called Main is mapped on the root of the site: /
-#  a controller called Something is mapped on: /something
-# If you want to override this, add a line like this inside the class
-#  map '/otherurl'
-# this will force the controller to be mounted on: /otherurl
+#
+# Blogaze
+# Copyright (C) 2011 Jack Polgar
+#
+# Blogaze is released under the BSD 3-clause license.
+#
 
 require __DIR__('../model/post')
 
