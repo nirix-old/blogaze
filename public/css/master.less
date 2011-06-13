@@ -1,5 +1,10 @@
 @import url('reset.css');
 
+/* ==========# Sexy stuffs #==========*/
+.textshadow (@color: #000) {
+  text-shadow: 1px 1px 0px @color;
+}
+
 /* ==========# Body and such #==========*/
 body {
   background: #eee;
@@ -22,6 +27,7 @@ body {
   h1 {
     font-size: 25px;
     font-weight: bold;
+    .textshadow;
   }
 }
 
@@ -57,6 +63,7 @@ li.post {
   background: #6ba81e;
   color: #fff;
   font-weight: bold;
+  .textshadow;
 }
 
 .content {

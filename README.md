@@ -23,3 +23,8 @@ Why
 
 There's two reasons why I've made Blogaze, the first is that I cant stand using PHP anymore
 the second is that because I no longer want to use PHP, I need a non-php blog.
+
+Gem?
+------
+
+Not yet, once this thing is actually _stable_ then there _may_ be a gem.
