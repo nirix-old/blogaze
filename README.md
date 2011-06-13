@@ -18,6 +18,8 @@ Now you need to create the tables and such with the Sequel migration thing:
 
 Obviously you want to change the `user`, `pass`, `server` and `dbname` to the actual values.
 
+Now all that's left is to pretty much start it up with your favorite server, I recommend Thin.
+
 Why
 ------
 
