@@ -10,7 +10,7 @@ module Admin
     map '/admin'
     
     def index
-      "Admin Dashboard"
+      @title = "Admin - #{@settings[:title]}"
     end
   end
 end

@@ -8,7 +8,7 @@
 class Controller < Ramaze::Controller
   layout :default
   helper :xhtml, :maruku
-  engine :Nagoro
+  engine :Etanni
   
   def initialize
     super

@@ -7,11 +7,11 @@
 
 class Sessions < Controller
   def new
-  
+    @title = "Login - #{@settings[:title]}"
   end
   
   def create
-    #@get_user = User[:username => request[:username], :password => BCrypt::Password.create(request[:password], :cost => 10)]
+    @title = "Login - #{@settings[:title]}"
     @get_user = User[:username => request[:username]]
     
     if @get_user.respond_to?('password') and @get_user.password == Digest::SHA1.hexdigest(request[:password])
@@ -20,7 +20,7 @@ class Sessions < Controller
       redirect Ramaze.options.prefix
     else
       @login_error = true
-      render_file 'view/sessions/new.nag'
+      render_file 'view/sessions/new.xhtml'
     end
   end
   

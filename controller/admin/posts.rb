@@ -9,6 +9,10 @@ module Admin
   class Posts < Controller
     map '/admin/posts'
     
+    before :create, :save do
+      request[:body] = request[:body].gsub("`", "\`")
+    end
+    
     before :new, :create do
       if !@userinfo.group.create_posts
         flash[:error] = "You don't have permission to do that."
@@ -31,14 +35,17 @@ module Admin
     end
     
     def index
+      @title = "Posts - Admin - #{@settings[:title]}"
       @posts = Post.order(:id.desc).all
     end
     
     def new
+      @title = "New Post - Posts - Admin - #{@settings[:title]}"
       @post = Post.new
     end
     
     def create
+      @title = "New Post - Posts - Admin - #{@settings[:title]}"
       data = {
         :title => request[:title],
         :body => request[:body],
@@ -48,17 +55,19 @@ module Admin
       
       if @post.valid?
         @post.save
-        redirect '/admin/posts'
+        redirect Posts.r('/')
       else
-        render_file 'view/admin/posts/new.nag'
+        render_file 'view/admin/posts/new.xhtml'
       end
     end
     
     def edit(post_id)
+      @title = "Edit Post - Posts - Admin - #{@settings[:title]}"
       @post = Post[post_id]
     end
     
     def save(post_id)
+      @title = "Edit Post - Posts - Admin - #{@settings[:title]}"
       @post = Post[post_id]
       @post.title = request[:title]
       @post.body = request[:body]
@@ -67,7 +76,7 @@ module Admin
         @post.save
         redirect Posts.r('/')
       else
-        render_file 'view/admin/posts/edit.nag'
+        render_file 'view/admin/posts/edit.xhtml'
       end
     end
     
