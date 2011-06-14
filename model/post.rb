@@ -17,8 +17,10 @@ class Post < Sequel::Model
   
   def before_create
     super
+    self.slug = Innate::Helper::CGI.u(self.title.scan(/\w+/).join('-')).downcase
     self.created_at = Time.now.to_i
     self.published_at = Time.now.to_i
+    self.updated_at = 0
   end
   
   def before_save

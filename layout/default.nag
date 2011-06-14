@@ -16,14 +16,20 @@
         <h1><a href="/">#{@settings[:title]}</a></h1>
         <nav>
           <ul>
-            <?r if session[:logged_in] ?>
-            <li><a href="/logout">Logout</a></li>
-            <?r else ?>
-            <li><a href="/login">Login</a></li>
+          <?r if session[:logged_in] ?>
+            <?r if @userinfo.group.is_admin? ?>
+            <li><a href="/admin">Admin</a></li>
             <?r end ?>
+            <li><a href="/logout">Logout</a></li>
+          <?r end ?>
           </ul>
         </nav>
       </header>
+      <?r if flash[:error] ?>
+      <div class="message error">
+        #{flash[:error]}
+      </div>
+      <?r end ?>
       <div id="page_wrapper">
         <div id="page">
           #@content

@@ -6,7 +6,7 @@
       Invalid username and/or password.
     </div>
     <?r end ?>
-    <div class="login-form">
+    <div class="login-form tabular">
       <form action="#{Ramaze.options.prefix}sessions/create" method="post">
         <p>
           <label for="username">Username</label>

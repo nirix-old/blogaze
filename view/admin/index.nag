@@ -1,0 +1,4 @@
+<div id="page_content">
+  <h2 id="page-title">Admin</h2>
+  Not much here right now except: #{a 'Posts', Admin::Posts.r('/')}
+</div>

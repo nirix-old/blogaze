@@ -106,24 +106,42 @@ body {
 }
 
 /* ==========# Forms #==========*/
-
-.register-form, .login-form {
-  width: 250px;
-  margin: 0 auto;
+.tabular {
   p {
-    margin-bottom: 0;
-    
-    label {
-      width: 90px;
-      display: block;
-      float: left;
-      text-align: right;
-      padding-top: 8px;
-      margin-right: 5px;
-    }
-    
-    .submit-btn {
-      margin-left: 94px;
-    }
+    margin: 0;
+    padding: 0;
+    padding-left: 165px;
+    clear: left;
   }
+
+  label {
+    font-weight: bold;
+    float: left;
+    margin-left: -165px;
+    text-align: right;
+    width: 160px;
+  }
+
+  label.norm {
+    font-weight: normal;
+    float: none;
+    margin-left: 0;
+    text-align: left;
+    width: 0;
+  }
+}
+
+.login-form, .register-form {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.new-post-form, .login-form, .register-form {
+  label {
+    padding-top: 8px;
+  }
+}
+
+table.list {
+  margin-bottom: 0;
 }

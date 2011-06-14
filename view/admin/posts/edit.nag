@@ -1,0 +1,21 @@
+<div id="page_content">
+  <h2 id="page-title">Edit Post</h2>
+  <div class="content">
+    <?r if @post.errors.count > 0 ?>
+      <div class="message error">
+        <?r @post.errors.each do |k, v| ?>
+          #{k} #{v.first}<br />
+        <?r end ?>
+      </div>
+    <?r end ?>
+    <div class="new-post-form tabular">
+       #{
+        form_for(@post, :method => :post, :action => '/admin/posts/save/' + @post.id.to_s) do |f|
+          f.input_text 'Title', :title
+          f.textarea 'Message', :body
+          f.submit "Save", :class => "submit-btn"
+        end
+      }
+    </div>
+  </div>
+</div>

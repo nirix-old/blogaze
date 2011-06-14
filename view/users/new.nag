@@ -8,7 +8,7 @@
         <?r end ?>
       </div>
     <?r end ?>
-    <div class="register-form">
+    <div class="register-form tabular">
     #{
       form_for(@user, :method => :post, :action => '/users/create') do |f|
         f.input_text 'Username', :username
