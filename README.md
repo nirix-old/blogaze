@@ -6,11 +6,19 @@ Simple blog powered by the Ramaze ruby framework.
 Installation
 ------------
 
+### Install Ramaze ###
+
 You'll need to install Ramaze, you can do so by running `gem install ramaze`, 
 next you'll want to install the required gems, run `bundle install`, hopefully that works.
 
-Now you need to setup the database, rename the `config/database.default.rb` to `config/database.rb` 
+### Configuration ###
+
+You'll need to rename the `config/config.default.rb` to `config/config.rb`.
+
+You also need to rename the `config/database.default.rb` to `config/database.rb` 
 and set your database username, password, server and database name.
+
+### The database tables ###
 
 Now you need to create the tables and such with the Sequel migration thing:
 
@@ -18,7 +26,12 @@ Now you need to create the tables and such with the Sequel migration thing:
 
 Obviously you want to change the `user`, `pass`, `server` and `dbname` to the actual values.
 
-Now all that's left is to pretty much start it up with your favorite server, I recommend Thin.
+### Running this thing ###
+
+Now all that's left is to pretty much start it up with your favorite server, I recommend [Thin](http://code.macournoyer.com/thin/).
+
+Once you have Thin installed, run `thin -R config.ru start`, if you want to run this on a domain
+you will need to setup a proxy from your web server, I recommend [NGiNX](http://nginx.org).
 
 Why
 ------
