@@ -17,7 +17,7 @@
         <nav>
           <ul>
           <?r if session[:logged_in] ?>
-            <?r if @userinfo.group.is_admin? ?>
+            <?r if @userinfo.group.is_admin ?>
             <li><a href="/admin">Admin</a></li>
             <?r end ?>
             <li><a href="/logout">Logout</a></li>
