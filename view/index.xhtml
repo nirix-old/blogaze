@@ -11,3 +11,13 @@
     </footer>
 </article>
 <?r end ?>
+<?r if @posts.page_count > 1 ?>
+<div class="pager_nav">
+  <?r if @posts.prev_page ?>
+  <a href="/page/#{@posts.prev_page}" class="prev">&lt; Previous</a>
+  <?r end ?>
+  <?r if @posts.next_page ?>
+  <a href="/page/#{@posts.next_page}" class="next">Next &gt; </a>
+  <?r end ?>
+</div>
+<?r end ?>

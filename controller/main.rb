@@ -7,8 +7,17 @@
 #
 
 class MainController < Controller
-  def index
-    @title = @settings[:title]
-    @posts = Post.order(:id.desc).limit 10
+  helper :paginate
+  
+  def index(page = 1)
+    if page.to_i > 1
+      @title = "Page #{page} - #{@settings[:title]}"
+    else
+      @title = @settings[:title]
+    end
+    #@posts = Post.order(:id.desc).limit 10
+    
+    data = Post.order(:published_at.desc)
+    @posts = paginate(data, :limit => 10, :page => page.to_i)
   end
 end
