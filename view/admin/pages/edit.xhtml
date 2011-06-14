@@ -14,6 +14,14 @@
           f.input_text 'Title', :title
           f.input_text 'Slug', :slug
           f.textarea 'Body', :body
+          f.g.p do
+            f.g.label do "On Menu?" end
+            if @page.on_menu.to_i == 1
+              f.g.input(:type => 'checkbox', :id => 'on_menu', :name => 'on_menu', :value => 1, :checked => 'checked')
+            else
+              f.g.input(:type => 'checkbox', :id => 'on_menu', :name => 'on_menu', :value => 1)
+            end
+          end
           f.submit "Save", :class => "submit-btn"
         end
       }

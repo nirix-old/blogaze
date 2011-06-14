@@ -23,7 +23,8 @@ module Admin
       data = {
         :title => request[:title],
         :slug => request[:slug],
-        :body => request[:body]
+        :body => request[:body],
+        :on_menu => request[:on_menu]
       }
       
       @page = Page.new(data)
@@ -48,6 +49,7 @@ module Admin
       @page.title = request[:title]
       @page.slug = request[:slug]
       @page.body = request[:body]
+      @page.on_menu = request[:on_menu]
       
       if @page.valid?
         @page.save

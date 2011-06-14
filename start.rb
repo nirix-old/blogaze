@@ -6,5 +6,4 @@
 # for options related to running the application locally.
 
 require File.expand_path('../app', __FILE__)
-require __DIR__('config/config')
 Ramaze.start(:adapter => :webrick, :port => 7000, :file => __FILE__)

@@ -14,6 +14,10 @@
           f.input_text 'Title', :title
           f.input_text 'Slug', :slug
           f.textarea 'Body', :body
+          f.g.p do
+            f.g.label do "On Menu?" end
+            f.g.input(:type => 'checkbox', :id => 'on_menu', :name => 'on_menu', :value => 1)
+          end
           f.submit "Create", :class => "submit-btn"
         end
       }

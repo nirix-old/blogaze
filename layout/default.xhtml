@@ -16,6 +16,9 @@
         <h1><a href="/">#{@settings[:title]}</a></h1>
         <nav>
           <ul>
+          <?r Page.filter(:on_menu => 1).all.each do |page| ?>
+          <li><a href="/#{page.slug}">#{page.title}</a></li>
+          <?r end ?>
           <?r if session[:logged_in] ?>
             <?r if @userinfo.group.is_admin ?>
             <li><a href="/admin">Admin</a></li>

@@ -9,6 +9,9 @@ require 'rubygems'
 require 'ramaze'
 require 'time-lord'
 
+# Config!
+require __DIR__('config/config')
+
 # Get routes
 require __DIR__('config/routes')
 

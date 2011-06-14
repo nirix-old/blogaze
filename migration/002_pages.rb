@@ -1,5 +1,5 @@
-class AddPagesTable < Sequel::Migration
-  def up
+Sequel.migration do
+  up do
     create_table :pages do
       primary_key :id
       String :title
@@ -10,7 +10,7 @@ class AddPagesTable < Sequel::Migration
     end
   end
   
-  def down
+  down do
     drop_table :pages
   end
 end
