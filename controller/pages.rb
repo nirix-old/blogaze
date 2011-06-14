@@ -19,6 +19,7 @@ class Pages < Controller
     if !@page.respond_to?('title')
       return render_view :notfound
     else
+      @title = "#{@page.title} - #{@settings[:title]}"
       return render_view :page
     end
   end
