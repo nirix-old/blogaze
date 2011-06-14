@@ -19,3 +19,4 @@ Sequel::Model.plugin :hook_class_methods
 require __DIR__('user')
 require __DIR__('group')
 require __DIR__('post')
+require __DIR__('page')
