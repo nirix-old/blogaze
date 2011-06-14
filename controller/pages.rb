@@ -10,14 +10,14 @@ class Pages < Controller
     if slug == nil
       slug = request.env["REQUEST_PATH"]
     end
-    slug = slug.chomp("/").reverse.chomp("/").reverse
+    slug = slug.chomp("/").reverse.chomp("/p/").reverse
     
     @page = Page[:slug => slug]
     
     if !@page.respond_to?('title')
-      render_file 'view/pages/notfound.xhtml'
+      return render_view :notfound
     else
-      render_file 'view/pages/page.xhtml'
+      return render_view :page
     end
   end
 end

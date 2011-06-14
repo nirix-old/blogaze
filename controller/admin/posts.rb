@@ -57,7 +57,7 @@ module Admin
         @post.save
         redirect Posts.r('/')
       else
-        render_file 'view/admin/posts/new.xhtml'
+        return render_view :new
       end
     end
     

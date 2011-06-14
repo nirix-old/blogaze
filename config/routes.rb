@@ -17,4 +17,4 @@ Ramaze::Route['/logout'] = '/sessions/destroy'
 Ramaze::Route['/register'] = '/users/new'
 
 # Page routes
-Ramaze::Route[/[\w]+/] = '/pages/view'
+Ramaze::Route[/\/p\/([\w]+)/] = '/pages/view'
