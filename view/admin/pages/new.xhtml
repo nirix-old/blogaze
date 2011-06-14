@@ -1,0 +1,22 @@
+<div id="page_content">
+  <h2 id="page-title">New Page</h2>
+  <div class="content">
+    <?r if @page.errors.count > 0 ?>
+      <div class="message error">
+        <?r @page.errors.each do |k, v| ?>
+          #{k} #{v.first}<br />
+        <?r end ?>
+      </div>
+    <?r end ?>
+    <div class="new-post-form tabular">
+       #{
+        form_for(@page, :method => :post, :action => '/admin/pages/create') do |f|
+          f.input_text 'Title', :title
+          f.input_text 'Slug', :slug
+          f.textarea 'Body', :body
+          f.submit "Create", :class => "submit-btn"
+        end
+      }
+    </div>
+  </div>
+</div>

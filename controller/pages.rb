@@ -10,9 +10,11 @@ class Pages < Controller
     if slug == nil
       slug = request.env["REQUEST_PATH"]
     end
-    slug = slug.chomp("/").reverse.chomp("/p/").reverse
+    slug = slug.chomp("/").reverse.chomp("/").reverse
     
     @page = Page[:slug => slug]
+    
+    @slug = slug
     
     if !@page.respond_to?('title')
       return render_view :notfound

@@ -1,0 +1,22 @@
+<div id="page_content">
+  <h2 id="page-title">Pages</h2>
+  <div class="content">
+    #{a 'New Page', :new}
+  </div>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?r @pages.each do |page| ?>
+      <tr>
+        <td>#{a page.title, :edit, page.id}</td>
+        <td>#{a 'Edit', :edit, page.id}, #{a 'Del', :delete, page.id}</td>
+      </tr>
+    <?r end ?>
+    </tbody>
+  </table>
+</div>

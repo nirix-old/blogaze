@@ -30,6 +30,11 @@
         #{flash[:error]}
       </div>
       <?r end ?>
+      <?r if flash[:success] ?>
+      <div class="message success">
+        #{flash[:success]}
+      </div>
+      <?r end ?>
       <div id="page_wrapper">
         <div id="page">
           #@content
