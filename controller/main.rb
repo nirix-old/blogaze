@@ -18,6 +18,6 @@ class MainController < Controller
     #@posts = Post.order(:id.desc).limit 10
     
     data = Post.order(:published_at.desc)
-    @posts = paginate(data, :limit => 10, :page => page.to_i)
+    @posts = paginate(data, :limit => @settings[:posts_per_page].to_i, :page => page.to_i)
   end
 end
