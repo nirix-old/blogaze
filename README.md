@@ -24,22 +24,23 @@ next you'll want to install the required gems, run `bundle install`, hopefully t
 
 ### Configuration ###
 
-You'll need to rename the `config/config.default.rb` to `config/config.rb`.
+Rename the `config.default.rb` and `database.default.rb` files to `config.rb` and `database.rb`
+in the `config` directory.
 
-You also need to rename the `config/database.default.rb` to `config/database.rb` 
-and set your database username, password, server and database name.
+Open the `database.rb` file and enter your database information.
 
-### The database tables ###
+### The database tables and data ###
 
-Now you need to create the tables and such with the Sequel migration thing:
+Now you need to setup the database, run `sequel -m migration mysql2://user:pass@server/dbname`
+that will create the database tables, now to load the default data, run `rake defaultdata`.
 
-`sequel -m migration mysql2://user:pass@server/dbname`
+*Note: you want to change the `user`, `pass`, `server` and `dbname` to the actual values.*
 
-Obviously you want to change the `user`, `pass`, `server` and `dbname` to the actual values.
+The default username is `Admin` and the password is `myadmin`.
 
 ### Running this thing ###
 
-Now all that's left is to pretty much start it up with your favorite server, I recommend [Thin](http://code.macournoyer.com/thin/).
+Now all that's left is to pretty much start it up with your favourite server, I recommend [Thin](http://code.macournoyer.com/thin/).
 
 Once you have Thin installed, run `thin -R config.ru start`, if you want to run this on a domain
 you will need to setup a proxy from your web server, I recommend [NGiNX](http://nginx.org).
