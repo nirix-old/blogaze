@@ -26,9 +26,10 @@ class Users < Controller
     
     if @user.valid?
       @user.save
-      redirect Ramaze.options.prefix
+      flash[:success] = "Account created, you may now login"
+      redirect '/login'
     else
-      render_file 'view/users/new.xhtml'
+      render_view :new
     end
   end
 end
