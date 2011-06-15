@@ -3,6 +3,17 @@ Blogaze
 
 Simple blog powered by the Ramaze ruby framework.
 
+Todo
+------
+
+Things that still need to be done.
+
+1. Post tags
+2. Post comments
+3. Settings page
+4. User manager
+5. Profile manager
+
 Installation
 ------------
 
