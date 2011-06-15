@@ -55,6 +55,7 @@ module Admin
       
       if @post.valid?
         @post.save
+        flash[:success] = "Post created successfully"
         redirect Posts.r('/')
       else
         return render_view :new
@@ -74,6 +75,7 @@ module Admin
       
       if @post.valid?
         @post.save
+        flash[:success] = "Post saved successfully"
         redirect Posts.r('/')
       else
         render_file 'view/admin/posts/edit.xhtml'
@@ -82,6 +84,7 @@ module Admin
     
     def delete(post_id)
       Post[post_id].delete
+      flash[:success] = "Post deleted successfully"
       redirect Posts.r('/')
     end
   end
