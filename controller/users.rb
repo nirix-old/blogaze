@@ -6,8 +6,6 @@
 #
 
 class Users < Controller
-  helper :blue_form, :formatting
-  
   def new
     @title = "Register - #{@settings[:title]}"
     @user = User.new

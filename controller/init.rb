@@ -7,7 +7,7 @@
 
 class Controller < Ramaze::Controller
   layout :default
-  helper :xhtml, :maruku
+  helper :xhtml, :maruku, :blue_form, :formatting
   engine :Etanni
   
   def initialize
@@ -32,7 +32,6 @@ require __DIR__('posts')
 require __DIR__('users')
 require __DIR__('sessions')
 require __DIR__('pages')
-require __DIR__('comments')
 
 # Admin controllers
 require __DIR__('admin/init')

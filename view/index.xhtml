@@ -7,7 +7,7 @@
       #{maruku post.body}
     </div>
     <footer class="meta">
-      By #{post.user.username}, <abbr title="#{Time.at(post.published_at)}">#{post.published_at.ago_in_words} ago</abbr>, <a href="#{post.href}#comments">#{post.comment.count} comments</a>
+      By #{post.user.username}, <abbr title="#{Time.at(post.published_at)}">#{post.published_at.ago_in_words}</abbr>, <a href="#{post.href}#comments">#{post.comment.count} comments</a>
     </footer>
 </article>
 <?r end ?>

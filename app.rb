@@ -23,7 +23,7 @@ Ramaze.options.roots = [__DIR__]
 # it to Bignum, Fixnum, and so on.
 class Object
   def ago_in_words
-    Time.at(self).ago_in_words.gsub(' ago', '')
+    Time.at(self).ago_in_words
   end
 end
 

@@ -6,7 +6,7 @@
       #{maruku @post.body}
     </div>
     <footer class="meta">
-      By #{@post.user.username}, <abbr title="#{Time.at(@post.published_at)}">#{@post.published_at.ago_in_words} ago</abbr>, #{@post.comment.count} comments
+      By #{@post.user.username}, <abbr title="#{Time.at(@post.published_at)}">#{@post.published_at.ago_in_words}</abbr>, #{@post.comment.count} comments
     </footer>
 </article>
 
@@ -14,10 +14,33 @@
   <h3><a name="comments" class="no-href">Comments</a></h3>
   <?r @post.comment.each do |comment| ?>
   <div class="comment">
-    <h4>#{comment.author}, #{comment.created_at.ago_in_words} ago</h4>
+    <h4>#{comment.author}, #{comment.created_at.ago_in_words}</h4>
     <div class="content">
       #{maruku comment.body}
     </div>
   </div>
   <?r end ?>
+</section>
+
+<section id="new_comment">
+  <h3>New Comment</h3>
+  <div class="content">
+    <?r if @comment.errors.count > 0 ?>
+      <div class="message error">
+        <?r @comment.errors.each do |k, v| ?>
+          #{k} #{v.first}<br />
+        <?r end ?>
+      </div>
+    <?r end ?>
+    <div class="new-comment-form tabular">
+      #{
+        form_for(@comment, :method => :post, :action => @post.href) do |f|
+          f.hidden :new_comment, 1
+          f.input_text 'Name', :author
+          f.textarea 'Message', :body
+          f.submit 'Post'
+        end
+      }
+    </div>
+  </div>
 </section>

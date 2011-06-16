@@ -11,7 +11,7 @@ class Comment < Sequel::Model
   many_to_one :post
   
   def validate
-    validates_presence [:post_id, :body]
+    validates_presence [:post_id, :author, :body]
     validates_integer :post_id
   end
   

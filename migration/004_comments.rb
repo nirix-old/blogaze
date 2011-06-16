@@ -6,7 +6,7 @@ Sequel.migration do
       String :body, :text => true
       Integer :post_id
       Integer :created_at
-      Integer :published_at, :default => 0
+      Integer :updated_at, :default => 0
     end
   end
   
