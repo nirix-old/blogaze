@@ -32,6 +32,7 @@ require __DIR__('posts')
 require __DIR__('users')
 require __DIR__('sessions')
 require __DIR__('pages')
+require __DIR__('comments')
 
 # Admin controllers
 require __DIR__('admin/init')

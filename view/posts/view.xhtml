@@ -6,6 +6,18 @@
       #{maruku @post.body}
     </div>
     <footer class="meta">
-      By #{@post.user.username}, <abbr title="#{Time.at(@post.published_at)}">#{@post.published_at.ago_in_words} ago</abbr>
+      By #{@post.user.username}, <abbr title="#{Time.at(@post.published_at)}">#{@post.published_at.ago_in_words} ago</abbr>, #{@post.comment.count} comments
     </footer>
 </article>
+
+<section id="comments">
+  <h3>Comments</h3>
+  <?r @post.comment.each do |comment| ?>
+  <div class="comment">
+    <h4>#{comment.author}, #{comment.created_at.ago_in_words} ago</h4>
+    <div class="content">
+      #{maruku comment.body}
+    </div>
+  </div>
+  <?r end ?>
+</section>

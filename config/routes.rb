@@ -11,6 +11,7 @@ Ramaze::Route[/\/admin(.*)/] = '/admin%s'
 # Post routes
 Ramaze::Route[/\/[0-9]+\/[0-9]+\/([\w\.\-]+)/] = '/posts/view/%s'
 Ramaze::Route[/\/page\/([0-9]+)/] = '/%d'
+Ramaze::Route[/\/comments\/create/] = '/comments/create'
 
 # User routes
 Ramaze::Route['/login'] = '/sessions/new'

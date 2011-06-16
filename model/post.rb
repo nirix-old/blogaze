@@ -9,6 +9,11 @@ class Post < Sequel::Model
   plugin :validation_helpers
   
   many_to_one :user
+  one_to_many :comment
+  
+  def href
+    return '/' + Time.at(self.published_at).year.to_s + '/' + Time.at(self.published_at).month.to_s + '/' + self.slug
+  end
   
   def validate
     validates_presence [:title, :body, :user_id]

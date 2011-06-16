@@ -16,7 +16,6 @@ Sequel::Model.plugin :schema
 Sequel::Model.plugin :hook_class_methods
 
 # Here go your requires for models:
-require __DIR__('user')
-require __DIR__('group')
-require __DIR__('post')
-require __DIR__('page')
+Dir.glob(File.dirname(__FILE__) + '/*.rb').each do |model|
+  require(model)
+end
