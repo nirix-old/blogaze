@@ -9,10 +9,6 @@ module Admin
   class Posts < Controller
     map '/admin/posts'
     
-    before :create, :save do
-      request[:body] = request[:body].gsub("`", "\`")
-    end
-    
     before :new, :create do
       if !@userinfo.group.create_posts
         flash[:error] = "You don't have permission to do that."

@@ -1,0 +1,21 @@
+<div id="page_content">
+  <h2 id="page-title">Comments</h2>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Post</th>
+        <th>Comment</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?r @comments.each do |comment| ?>
+      <tr>
+        <td>#{comment.post.title}</td>
+        <td>#{maruku comment.body}</td>
+        <td><?r if comment.in_moderation == 1 ?>#{a 'Approve', :approve, comment.id},<?r end ?> #{a 'Del', :delete, comment.id}</td>
+      </tr>
+    <?r end ?>
+    </tbody>
+  </table>
+</div>

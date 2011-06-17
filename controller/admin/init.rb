@@ -22,3 +22,4 @@ end
 require __DIR__('main')
 require __DIR__('posts')
 require __DIR__('pages')
+require __DIR__('comments')
