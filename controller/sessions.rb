@@ -20,7 +20,7 @@ class Sessions < Controller
       redirect Ramaze.options.prefix
     else
       @login_error = true
-      render_file 'view/sessions/new.xhtml'
+      render_view :new
     end
   end
   

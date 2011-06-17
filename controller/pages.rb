@@ -10,12 +10,15 @@ class Pages < Controller
     if slug == nil
       slug = request.env["REQUEST_PATH"]
     end
+    
+    # Chomp chomp chomp, let's trim any unwanted
+    # forward slashes from the begning and end of the url.
     slug = slug.chomp("/").reverse.chomp("/").reverse
     
     @page = Page[:slug => slug]
     
-    @slug = slug
-    
+    # Check if the page exists, if not render the
+    # not found page.
     if !@page.respond_to?('title')
       return render_view :notfound
     else

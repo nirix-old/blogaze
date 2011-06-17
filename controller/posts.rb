@@ -10,8 +10,10 @@ class Posts < Controller
     @post = Post.filter(:slug => slug).first
     @title = @post.title + ' - ' + @settings[:title]
     
+    # Instead of a controller just for comment creation
+    # let's just put it here, that way we can display
+    # errors with the new comment form.
     if request[:new_comment].to_i == 1
-      @title = "woops"
       data = {
         :post_id => @post.id,
         :author => request[:author],

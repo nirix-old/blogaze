@@ -74,7 +74,7 @@ module Admin
         flash[:success] = "Post saved successfully"
         redirect Posts.r('/')
       else
-        render_file 'view/admin/posts/edit.xhtml'
+        render_view :edit
       end
     end
     
