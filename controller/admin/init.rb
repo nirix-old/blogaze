@@ -19,7 +19,6 @@ module Admin
   end
 end
 
-require __DIR__('main')
-require __DIR__('posts')
-require __DIR__('pages')
-require __DIR__('comments')
+Dir.glob(File.dirname(__FILE__) + '/*.rb').each do |controller|
+  require(controller)
+end

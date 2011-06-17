@@ -24,18 +24,24 @@ class Controller < Ramaze::Controller
       @settings[setting[:setting].to_sym] = setting[:value]
     end
     
-    # Set theme
-    Ramaze.options.layouts = ["themes/#{@settings[:theme]}/layouts"]
-    Ramaze.options.views = ["themes/#{@settings[:theme]}"]
+    # Update the theme directory
+    if @settings[:theme] != 'default'
+      Ramaze.options.layouts = ["themes/#{@settings[:theme]}/layouts"]
+      Ramaze.options.views = ["themes/#{@settings[:theme]}"]
+    end
   end
 end
 
 # Here go your requires for subclasses of Controller:
-require __DIR__('main')
-require __DIR__('posts')
-require __DIR__('users')
-require __DIR__('sessions')
-require __DIR__('pages')
+#require __DIR__('main')
+#require __DIR__('posts')
+#require __DIR__('users')
+#require __DIR__('sessions')
+#require __DIR__('pages')
+
+Dir.glob(File.dirname(__FILE__) + '/*.rb').each do |controller|
+  require(controller)
+end
 
 # Admin controllers
 require __DIR__('admin/init')
