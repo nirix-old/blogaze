@@ -5,11 +5,6 @@
 # Blogaze is released under the BSD 3-clause license.
 #
 
-require 'sequel'
-require 'sequel/extensions/inflector'
-
-require __DIR__('../config/database.rb')
-
 Sequel.extension :pagination
 Sequel::Model.plugin :validation_class_methods
 Sequel::Model.plugin :schema

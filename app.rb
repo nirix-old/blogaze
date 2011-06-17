@@ -7,6 +7,8 @@
 
 require 'rubygems'
 require 'ramaze'
+require 'sequel'
+require 'sequel/extensions/inflector'
 require 'time-lord'
 
 # Config!
@@ -17,6 +19,14 @@ require __DIR__('config/routes')
 
 # Make sure that Ramaze knows where we are
 Ramaze.options.roots = [__DIR__]
+
+# Get the database config
+require __DIR__('config/database')
+
+# Get (and set) the theme
+theme = DB[:settings].filter(:setting => 'theme').first
+Ramaze.options.layouts = ["themes/#{theme[:value]}/layouts"]
+Ramaze.options.views = ["themes/#{theme[:value]}"]
 
 # This is a total hack to get {blah].ago_in_words
 # available on all numbers instead of having to add
