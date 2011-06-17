@@ -1,4 +1,4 @@
-db/*
+db/*.db
 config/database.rb
 config/config.rb
 Gemfile.lock
