@@ -15,7 +15,8 @@ class Posts < Controller
       data = {
         :post_id => @post.id,
         :author => request[:author],
-        :body => request[:body]
+        :body => request[:body],
+        :in_moderation => @settings[:moderate_comments]
       }
       @comment = Comment.new(data)
       if @comment.valid?

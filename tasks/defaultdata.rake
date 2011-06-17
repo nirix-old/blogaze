@@ -7,6 +7,7 @@ task :defaultdata do
   settings = DB[:settings]
   settings.insert(:setting => 'title', :value => 'Blogaze')
   settings.insert(:setting => 'posts_per_page', :value => 5)
+  settings.insert(:setting => 'moderate_comments', :value => 1)
   
   # Insert groups
   puts "Inserting groups"

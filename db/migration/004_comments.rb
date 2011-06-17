@@ -5,6 +5,7 @@ Sequel.migration do
       String :author
       String :body, :text => true
       Integer :post_id
+      Integer :in_moderation
       Integer :created_at
       Integer :updated_at, :default => 0
     end
