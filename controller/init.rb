@@ -25,7 +25,8 @@ class Controller < Ramaze::Controller
     end
     
     # Set theme
-    Ramaze.options.views = ["view/#{@settings[:theme]}"]
+    Ramaze.options.layouts = ["themes/#{@settings[:theme]}/layouts"]
+    Ramaze.options.views = ["themes/#{@settings[:theme]}"]
   end
 end
 
