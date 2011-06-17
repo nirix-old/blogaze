@@ -23,6 +23,9 @@ class Controller < Ramaze::Controller
     DB[:settings].all.each do |setting|
       @settings[setting[:setting].to_sym] = setting[:value]
     end
+    
+    # Set theme
+    Ramaze.options.views = ["view/#{@settings[:theme]}"]
   end
 end
 
