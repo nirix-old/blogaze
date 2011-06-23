@@ -25,20 +25,33 @@ class Controller < Ramaze::Controller
     end
     
     # Update the theme directory
-    if @settings[:theme] != 'default'
-      Ramaze.options.layouts = ["themes/#{@settings[:theme]}/layouts"]
-      Ramaze.options.views = ["themes/#{@settings[:theme]}"]
-    end
+    #Ramaze.options.layouts = ["themes/#{@settings[:theme]}/layouts"]
+    #Ramaze.options.views = ["themes/#{@settings[:theme]}"]
+		#action.view = "themes/#{@settings[:theme]}" + action.view ? action.view : '/index.xhtml'
+		#@lolwut = # + ".xhtml"
+		#@lolwutt = __DIR__#action.path
+		#@lolwut = action.layout
+		#realpath = File.realpath('./')
+		
+		#@lolwutt = layout_file
+		
+		
+		
+		realpath = File.realpath('./')
+		layout_file = action.layout.to_a[1].to_s.gsub(realpath + '/themes/default/layouts/', '')
+		action.view = realpath + "/themes/#{@settings[:theme]}/" + action.view.gsub(realpath + '/themes/default/', '')
   end
+	
+	def get_view(view, args = {})
+		if args[:layout]
+			#action.view = 'test'
+		end
+		#ext = args[:ext] ? args[:ext] : 'xhtml'
+		#"themes/#{@settings[:theme]}/#{view}.#{ext}"
+	end
 end
 
 # Here go your requires for subclasses of Controller:
-#require __DIR__('main')
-#require __DIR__('posts')
-#require __DIR__('users')
-#require __DIR__('sessions')
-#require __DIR__('pages')
-
 Dir.glob(File.dirname(__FILE__) + '/*.rb').each do |controller|
   require(controller)
 end

@@ -24,9 +24,10 @@ Ramaze.options.roots = [__DIR__]
 require __DIR__('config/database')
 
 # Get (and set) the theme
-theme = DB[:settings].filter(:setting => 'theme').first
-Ramaze.options.layouts = ["themes/#{theme[:value]}/layouts"]
-Ramaze.options.views = ["themes/#{theme[:value]}"]
+#theme = DB[:settings].filter(:setting => 'theme').first
+Ramaze.options.layouts = ["themes/default/layouts"]
+Ramaze.options.views = ["themes/default"]
+#Ramaze.options.layouts = ["themes"]
 
 # This is a total hack to get {blah].ago_in_words
 # available on all numbers instead of having to add
