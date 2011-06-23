@@ -16,7 +16,7 @@
   <div class="comment">
     <h4>#{comment.author}, #{comment.created_at.ago_in_words}</h4>
     <div class="content">
-      #{maruku comment.body}
+      #{maruku CGI::escapeHTML(comment.body)}
     </div>
   </div>
   <?r end ?>
