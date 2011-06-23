@@ -4,6 +4,7 @@
     <thead>
       <tr>
         <th>Post</th>
+        <th>Author</th>
         <th>Comment</th>
         <th class="actions">Actions</th>
       </tr>
@@ -12,8 +13,9 @@
     <?r @comments.each do |comment| ?>
       <tr>
         <td>#{comment.post.title}</td>
-        <td>#{maruku comment.body}</td>
-        <td><?r if comment.in_moderation == 1 ?>#{a 'Approve', :approve, comment.id},<?r end ?> #{a 'Del', :delete, comment.id}</td>
+        <td>#{comment.author}</td>
+        <td>#{maruku CGI::escapeHTML(comment.body)}</td>
+        <td><?r if comment.in_moderation == 1 ?>#{a 'Approve', :approve, comment.id},<?r end ?> #{a 'Delete', :delete, comment.id}</td>
       </tr>
     <?r end ?>
     </tbody>
