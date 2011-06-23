@@ -25,10 +25,10 @@ class Controller < Ramaze::Controller
     end
     
     realpath = File.realpath('./')
-    if File.exists?(action.layout.to_a[1].to_s.gsub(realpath + '/themes/default/layouts/', ''))
+    if action.layout and File.exists?(action.layout.to_a[1].to_s.gsub(realpath + '/themes/default/layouts/', ''))
       layout_file = action.layout.to_a[1].to_s.gsub(realpath + '/themes/default/layouts/', '')
     end
-    if File.exists?(realpath + "/themes/#{@settings[:theme]}/" + action.view.gsub(realpath + '/themes/default/', ''))
+    if action.view and File.exists?(realpath + "/themes/#{@settings[:theme]}/" + action.view.gsub(realpath + '/themes/default/', ''))
       action.view = realpath + "/themes/#{@settings[:theme]}/" + action.view.gsub(realpath + '/themes/default/', '')
     end
   end
