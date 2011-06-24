@@ -31,6 +31,7 @@ class Post < Sequel::Model
   end
   
   def before_save
+    self.slug = Innate::Helper::CGI.u(self.title.scan(/\w+/).join('-')).downcase
     self.updated_at = Time.now.to_i
   end
 end

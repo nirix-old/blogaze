@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#{@title}</title>
+    <link href="#{Ramaze.options.prefix}css/master.less" rel="stylesheet/less" type="text/css">
+    <link href="/css/print.css" media="print" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 8]>
+    #{css 'ie'}
+    <![endif]-->
+    #{js 'jquery'}
+    #{js 'less'}
+  </head>
+  <body>
+    <div id="wrapper">
+      <header id="header">
+        <h1>#{a 'AdminCP', Admin::Dashboard.r('/')}</h1>
+        <nav>
+          <ul>
+            <li>#{a 'View Site', MainController.r('/')}</li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </nav>
+      </header>
+      <?r if flash[:error] ?>
+      <div class="message error">
+        #{flash[:error]}
+      </div>
+      <?r end ?>
+      <?r if flash[:success] ?>
+      <div class="message success">
+        #{flash[:success]}
+      </div>
+      <?r end ?>
+      <div id="page_wrapper">
+        <div id="page">
+          #@content
+        </div>
+      </div>
+      <footer id="footer">
+        Powered by Blogaze
+      </footer>
+    </div>
+  </body>
+</html>

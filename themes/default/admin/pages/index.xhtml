@@ -14,7 +14,7 @@
     <?r @pages.each do |page| ?>
       <tr>
         <td>#{a page.title, :edit, page.id}</td>
-        <td>#{a 'Edit', :edit, page.id}, #{a 'Del', :delete, page.id}</td>
+        <td>#{a 'Edit', :edit, page.id}, #{a 'Delete', :delete, page.id}</td>
       </tr>
     <?r end ?>
     </tbody>

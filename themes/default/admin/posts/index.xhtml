@@ -14,7 +14,7 @@
     <?r @posts.each do |post| ?>
       <tr>
         <td>#{a post.title, :edit, post.id}</td>
-        <td>#{a 'Edit', :edit, post.id}, #{a 'Del', :delete, post.id}</td>
+        <td>#{a 'Edit', :edit, post.id}, #{a 'Delete', :delete, post.id}</td>
       </tr>
     <?r end ?>
     </tbody>

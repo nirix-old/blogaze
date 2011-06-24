@@ -7,6 +7,7 @@
 
 module Admin
   class Controller < ::Controller
+    set_layout 'admin'
     helper :blue_form
     
     def initialize

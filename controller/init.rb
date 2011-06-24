@@ -24,6 +24,10 @@ class Controller < Ramaze::Controller
       @settings[setting[:setting].to_sym] = setting[:value]
     end
     
+    set_theme
+  end
+  
+  def set_theme
     realpath = File.realpath('./')
     if action.layout and File.exists?(action.layout.to_a[1].to_s.gsub(realpath + '/themes/default/layouts/', ''))
       layout_file = action.layout.to_a[1].to_s.gsub(realpath + '/themes/default/layouts/', '')
