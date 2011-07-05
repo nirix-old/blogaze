@@ -19,12 +19,16 @@ class Controller < Ramaze::Controller
     end
     
     # Get settings
+    get_settings
+    
+    set_theme
+  end
+  
+  def get_settings
     @settings = {}
     DB[:settings].all.each do |setting|
       @settings[setting[:setting].to_sym] = setting[:value]
     end
-    
-    set_theme
   end
   
   def set_theme
