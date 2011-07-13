@@ -4,7 +4,12 @@
       <h2 class="title">#{a post.title, '/' + Time.at(post.created_at).year.to_s + '/' + Time.at(post.created_at).month.to_s + '/' + post.slug}</h2>
     </header>
     <div class="post-body">
+      <?r if post.body == post.body_partial ?>
       #{maruku post.body}
+      <?r else ?>
+      #{maruku post.body_partial}
+      #{a 'Continue reading...', post.href}
+      <?r end ?>
     </div>
     <footer class="meta">
       By #{post.user.username}, <abbr title="#{Time.at(post.published_at)}">#{post.published_at.ago_in_words}</abbr>, <a href="#{post.href}#comments">#{post.comment.count} comments</a>

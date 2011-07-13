@@ -17,6 +17,11 @@ class Post < Sequel::Model
     return '/' + Time.at(self.published_at).year.to_s + '/' + Time.at(self.published_at).month.to_s + '/' + self.slug
   end
   
+  def body_partial
+    body = self.body.split('<!-- MORE -->')
+    return body[0]
+  end
+  
   def validate
     validates_presence [:title, :body, :user_id]
     validates_integer :user_id
