@@ -17,17 +17,16 @@ Todo
 Things that still need to be done.
 
 1. Post tags
-3. Settings page
-4. User manager
-5. Profile manager
+2. User manager
+3. Profile manager
 
 Why
 ------
 
-There's two reasons why I've made Blogaze, the first is that I cant stand using PHP anymore
-the second is that because I no longer want to use PHP, I need a non-php blog.
+I created Blogaze because I needed a non-PHP blog platform, why? I'm done with PHP.
 
 Gem?
 ------
 
-Not yet, once this thing is actually _stable_ then there _may_ be a gem.
+Probably not, its not something you really need a gem for, but who knows,
+maybe one version 1.0 has been released.

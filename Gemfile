@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
-
+gem 'ramaze'
 gem 'sequel'
 gem 'maruku'
-gem 'mysql2'
 gem 'time-lord'
