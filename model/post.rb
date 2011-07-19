@@ -17,6 +17,16 @@ class Post < Sequel::Model
     return '/' + Time.at(self.published_at).year.to_s + '/' + Time.at(self.published_at).month.to_s + '/' + self.slug
   end
   
+  def tags
+    tags = []
+    relationships = TagsRelationship.where(:object_id => self.id, :object_type => 'post')
+    relationships.each do |rel|
+      tags.push rel.tag
+    end
+    
+    return tags
+  end
+  
   def body_partial
     body = self.body.split('<!-- MORE -->')
     return body[0]
