@@ -6,6 +6,13 @@
       #{maruku @post.body}
     </div>
     <footer class="meta">
+      <?r if @post.tags.count > 0 ?>
+      <div class="tags">
+        <?r @post.tags.each do |tag| ?>
+        #{a tag.name, tag.href}
+        <?r end ?>
+      </div>
+      <?r end ?>
       By #{@post.user.username}, <abbr title="#{Time.at(@post.published_at)}">#{@post.published_at.ago_in_words}</abbr>, #{@post.comment.count} comments
     </footer>
 </article>

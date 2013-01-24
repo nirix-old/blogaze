@@ -15,7 +15,7 @@
       <?r if post.tags.count > 0 ?>
       <div class="tags">
         <?r post.tags.each do |tag| ?>
-        #{a tag[:name], "/tags/#{tag[:slug]}"}
+        #{a tag.name, tag.href}
         <?r end ?>
       </div>
       <?r end ?>
