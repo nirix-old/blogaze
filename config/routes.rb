@@ -1,6 +1,6 @@
 #
 # Blogaze
-# Copyright (C) 2011 Jack Polgar
+# Copyright (C) 2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
 #
@@ -9,7 +9,7 @@
 Ramaze::Route[/\/admin(.*)/] = '/admin%s'
 
 # Post routes
-Ramaze::Route[/\/[0-9]+\/[0-9]+\/([\w\.\-]+)/] = '/posts/view/%s'
+Ramaze::Route[/^\/[0-9]+\/[0-9]+\/([\w\.\-]+)$/] = '/posts/view/%s'
 Ramaze::Route[/\/page\/([0-9]+)/] = '/%d'
 
 # User routes
@@ -20,4 +20,4 @@ Ramaze::Route['/users/create'] = '/users/create'
 Ramaze::Route[/\/sessions(.*)/] = '/sessions%s'
 
 # Page routes
-Ramaze::Route[/\/([\w]+)/] = '/pages/view'
+Ramaze::Route[/^\/([a-zA-Z]+)$/] = '/pages/view'
