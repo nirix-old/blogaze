@@ -1,15 +1,22 @@
 Blogaze
 ========
 
-Simple blog powered by the Ramaze ruby framework.
-
-See the [installation instructions](https://github.com/nirix/blogaze/wiki/Installation) on how to setup Blogaze.
+Simple blog powered by the Ramaze framework.
 
 WARNING
 -------
 
-Blogaze is currently in development, use at your own risk. Database migration files may be changed
-requiring you to migrate down then up causing data loss unless you backup or modify the database yourself.
+Blogaze is currently in development, use at your own risk.
+
+Setup
+------
+
+1. Rename the config files in the `config` directory to remove `.default` from the filenames.
+2. Enter your database information in the `config/database.rb` file.
+3. Run `rake db:migrate` and `rake db:defaults`
+4. Run `ruby start.rb` or `thin start` or whatever your preferred way is.
+
+The default admin account username is `admin` and the password is `myadmin`.
 
 Todo
 ------
@@ -20,13 +27,7 @@ Things that still need to be done.
 2. User manager
 3. Profile manager
 
-Why
-------
-
-I created Blogaze because I needed a non-PHP blog platform, why? I'm done with PHP.
-
 Gem?
 ------
 
-Probably not, its not something you really need a gem for, but who knows,
-maybe one version 1.0 has been released.
+Someday.
