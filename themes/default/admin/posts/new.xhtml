@@ -9,10 +9,11 @@
       </div>
     <?r end ?>
     <div class="new-post-form tabular">
-       #{
+      #{
         form_for(@post, :method => :post, :action => '/admin/posts/create') do |f|
           f.input_text 'Title', :title
           f.textarea 'Message', :body
+          f.input_text 'Tags (seperated by comma)', :post_tags
           f.submit "Create", :class => "submit-btn"
         end
       }

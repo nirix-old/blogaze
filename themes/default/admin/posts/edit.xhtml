@@ -13,6 +13,7 @@
         form_for(@post, :method => :post, :action => '/admin/posts/save/' + @post.id.to_s) do |f|
           f.input_text 'Title', :title
           f.textarea 'Message', :body
+          f.input_text 'Tags (seperated by comma)', :post_tags
           f.submit "Save", :class => "submit-btn"
         end
       }
