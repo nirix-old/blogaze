@@ -28,6 +28,5 @@ Todo
 
 Things that still need to be done.
 
-1. Post tags
-2. User manager
-3. Profile manager
+1. User manager
+2. Profile manager

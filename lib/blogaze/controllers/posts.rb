@@ -10,10 +10,11 @@ module Blogaze
   module Controllers
     class Posts < Controller
       map '/posts'
+      helper :paginate
 
       ##
-       # View post
-       #
+      # View post
+      #
       def view(slug)
         @post = ::Blogaze::Models::Post.filter(:slug => slug).first
         return respond(view_file('pages/notfound')) if @post.nil?
@@ -42,6 +43,34 @@ module Blogaze
         end
 
         respond(view_file('posts/view'))
+      end
+
+      ##
+      # Lists posts belonging to the tag.
+      #
+      def tag(slug, page = 1)
+        @tag = ::Blogaze::Models::Tag[:slug => slug]
+        return respond(view_file('pages/notfound')) if @tag.nil?
+
+        # Get relationships with posts and put the post IDs
+        # into an array for use when selecting posts to be
+        # paginated.
+        post_ids = []
+        relations = ::Blogaze::Models::TagsRelationship.where(:object_type => 'post', :tag_id => @tag.id)
+        relations.each do |rel|
+          # Due to object_id being a Ruby method, we need to
+          # get the object ID the alternative way.
+          post_ids.push rel[:object_id]
+        end
+
+        puts post_ids
+
+        # Get the data and paginate it.
+        data = ::Blogaze::Models::Post.where(:id => post_ids).order(:published_at.desc)
+        puts data.sql
+        @posts = paginate(data, :limit => @settings[:posts_per_page].to_i, :page => page.to_i)
+
+        respond(view_file(:index))
       end
     end # Posts
   end # Controllers

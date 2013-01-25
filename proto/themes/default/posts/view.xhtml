@@ -9,7 +9,7 @@
       <?r if @post.tags.count > 0 ?>
       <div class="tags">
         <?r @post.tags.each do |tag| ?>
-        #{a tag.name, tag.href}
+        <a href="#{tag.href}">#{tag.name}</a>
         <?r end ?>
       </div>
       <?r end ?>
