@@ -17,10 +17,16 @@ module Blogaze
         cmt.filter{in_moderation < 1}
       end
 
+      ##
+      # Returns the URI to the post.
+      #
       def href
         return '/' + Time.at(self.published_at).year.to_s + '/' + Time.at(self.published_at).month.to_s + '/' + self.slug
       end
 
+      ##
+      # Returns an array of the posts tags.
+      #
       def tags
         tags = []
         relationships = ::Blogaze::Models::TagsRelationship.where(:object_id => self.id, :object_type => 'post')
@@ -31,6 +37,9 @@ module Blogaze
         return tags
       end
 
+      ##
+      # Returns the partial body of the post.
+      #
       def body_partial
         body = self.body.split('<!-- MORE -->')
         return body[0]
@@ -61,7 +70,10 @@ module Blogaze
       private
 
       def process_tags
+        # Names of tags, obviously
         tag_names = []
+
+        # Loop over new tags and create them and the relationships, if needed
         post_tags.each do |tag|
           t = Tag.find_or_create(:name => tag.strip)
           tag_names.push t.name
@@ -70,6 +82,8 @@ module Blogaze
           end
         end
 
+        # Loop over all tags and delete relationships
+        # for removed tags.
         tags.each do |tag|
           if not tag_names.include?(tag.name)
             ::Blogaze::Models::TagsRelationship.where({ :object_id => id, :object_type => 'post', :tag_id => tag.id }).delete
