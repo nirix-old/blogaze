@@ -1,0 +1,31 @@
+<div id="page_content">
+  <h2 id="page-title">Settings</h2>
+  <div class="content">
+    <form action="#{Blogaze::Admin::Settings.r('save')}" method="post" class="tabular">
+      <p>
+        <label>Blog Title</label>
+        <input type="text" name="settings[title]" value="#{@settings[:title]}">
+      </p>
+      <p>
+        <label>Theme</label>
+        <select name="settings[theme]">
+        <?r @themes.each do |theme| ?>
+          <option value="#{theme}" <?r if theme == @settings[:theme] ?>selected="selected"<?r end ?>>#{theme}</option>
+        <?r end ?>
+        </select>
+      </p>
+      <p>
+        <label>Posts per page</label>
+        <input type="text" name="settings[posts_per_page]" value="#{@settings[:posts_per_page]}">
+      </p>
+      <p>
+        <label>Moderate comments?</label>
+        <input type="radio" value="1" name="settings[moderate_comments]" <?r if @settings[:moderate_comments] == '1' ?>checked="checked"<?r end ?> /> Yes
+        <input type="radio" value="0" name="settings[moderate_comments]" <?r if @settings[:moderate_comments] == '0' ?>checked="checked"<?r end ?> /> No
+      </p>
+      <p>
+        <input type="submit" value="Save" />
+      </p>
+    </form>
+  </div>
+</div>

@@ -1,5 +1,1 @@
-require 'rake'
-require 'time'
-require 'date'
-
-Dir['tasks/*.rake'].each{|f| import(f) }
+require "bundler/gem_tasks"

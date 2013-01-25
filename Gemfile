@@ -1,5 +1,4 @@
-source 'http://rubygems.org'
-gem 'ramaze'
-gem 'sequel'
-gem 'maruku'
-gem 'time-lord'
+source 'https://rubygems.org'
+
+# Specify your gem's dependencies in blog.gemspec
+gemspec

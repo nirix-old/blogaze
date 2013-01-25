@@ -1,0 +1,6 @@
+require 'rake'
+require 'time'
+require 'date'
+
+require File.expand_path('../app.rb', __FILE__)
+require 'blogaze/tasks'
