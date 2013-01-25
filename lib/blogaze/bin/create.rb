@@ -17,24 +17,30 @@ module Blogaze
       PROTOTYPE = __DIR__('../../../proto')
 
       def index
+        # Require the name argument
         if ARGV[0] == '' or ARGV[0].nil?
           puts "Missing argument [NAME]"
           return
         end
 
+        # Destination to copy files
         destination = File.join(Dir.pwd, ARGV[0])
 
+        # Make sure the destination doesn't exist
         if File.directory?(destination) and !option(:f)
           puts "Directory already exists with name: #{ARGV[0]}"
           return
         else
+          # Copy files
           puts 'Copying files...'
           FileUtils.cp_r(PROTOTYPE, destination)
 
+          # Rename config files
           ['config.default.rb', 'database.default.rb'].each do |config|
             FileUtils.mv(destination + "/config/#{config}", destination + "/config/" + config.gsub('.default', ''))
           end
 
+          # Tell the user what to do next
           puts 'Done.'
           puts
           puts "You will need to enter your database information"
