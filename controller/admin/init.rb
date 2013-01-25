@@ -1,18 +1,19 @@
 #
 # Blogaze
-# Copyright (C) 2011 Jack Polgar
+# Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
+# @license http://opensource.org/licenses/BSD-3-Clause
 #
 
 module Admin
   class Controller < ::Controller
-    set_layout 'admin'
+    layout 'admin'
     helper :blue_form
-    
+
     def initialize
       super
-      
+
       if !@userinfo.respond_to?('group') or !@userinfo.group.is_admin
         redirect '/login'
       end

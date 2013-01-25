@@ -1,44 +1,41 @@
 #
 # Blogaze
-# Copyright (C) 2011 Jack Polgar
+# Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
+# @license http://opensource.org/licenses/BSD-3-Clause
 #
 
 class Controller < Ramaze::Controller
   layout :default
   helper :xhtml, :maruku, :blue_form, :formatting
   engine :etanni
-  
+
   def initialize
     super
-    
+
     # Get user info
     if session[:logged_in]
       @userinfo = User[1]
     end
-    
+
     # Get settings
     get_settings
-    
-    set_theme
+
+    Blogaze::Theme.use @settings[:theme]
   end
-  
+
+  def view_file(path)
+    path = path.to_s if not path.is_a?(String)
+    view_path = File.join(Blogaze::Theme.current.templates, "#{path}.xhtml")
+    layout_path = File.join(Blogaze::Theme.current.templates + "/layouts/#{ancestral_trait[:layout]}.xhtml")
+    return render_file(layout_path, :content => render_file(view_path))
+  end
+
   def get_settings
     @settings = {}
     DB[:settings].all.each do |setting|
       @settings[setting[:setting].to_sym] = setting[:value]
-    end
-  end
-  
-  def set_theme
-    realpath = File.realpath('./')
-    if action.layout and File.exists?(action.layout.to_a[1].to_s.gsub(realpath + '/themes/default/layouts/', ''))
-      layout_file = action.layout.to_a[1].to_s.gsub(realpath + '/themes/default/layouts/', '')
-      action.layout = [:layout, layout_file]
-    end
-    if action.view and File.exists?(realpath + "/themes/#{@settings[:theme]}/" + action.view.gsub(realpath + '/themes/default/', ''))
-      action.view = realpath + "/themes/#{@settings[:theme]}/" + action.view.gsub(realpath + '/themes/default/', '')
     end
   end
 end

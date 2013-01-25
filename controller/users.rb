@@ -1,16 +1,18 @@
 #
 # Blogaze
-# Copyright (C) 2011 Jack Polgar
+# Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
+# @license http://opensource.org/licenses/BSD-3-Clause
 #
 
 class Users < Controller
   def new
     @title = "Register - #{@settings[:title]}"
     @user = User.new
+    respond(view_file('users/new'))
   end
-  
+
   def create
     @title = "Register - #{@settings[:title]}"
     data = {
@@ -19,15 +21,15 @@ class Users < Controller
       :email => request[:email],
       :group_id => 3
     }
-    
+
     @user = User.new(data)
-    
+
     if @user.valid?
       @user.save
       flash[:success] = "Account created, you may now login"
       redirect '/login'
     else
-      render_view :new
+      respond(view_file('users/new'))
     end
   end
 end

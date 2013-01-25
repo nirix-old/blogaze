@@ -1,8 +1,9 @@
 #
 # Blogaze
-# Copyright (C) 2013 Jack Polgar
+# Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
+# @license http://opensource.org/licenses/BSD-3-Clause
 #
 
 module Admin
@@ -33,11 +34,13 @@ module Admin
     def index
       @title = "Posts - Admin - #{@settings[:title]}"
       @posts = Post.order(:id.desc).all
+      respond(view_file('admin/posts/index'))
     end
 
     def new
       @title = "New Post - Posts - Admin - #{@settings[:title]}"
       @post = Post.new
+      respond(view_file('admin/posts/new'))
     end
 
     def create
@@ -56,7 +59,7 @@ module Admin
         redirect Posts.r('/')
       else
         @post.post_tags = @post.post_tags.join(', ')
-        return render_view :new
+        respond(view_file('admin/posts/new'))
       end
     end
 
@@ -69,6 +72,8 @@ module Admin
         post_tags.push tag.name
       end
       @post.post_tags = post_tags.join(', ')
+
+      respond(view_file('admin/posts/edit'))
     end
 
     def save(post_id)
@@ -83,7 +88,7 @@ module Admin
         flash[:success] = "Post saved successfully"
         redirect Posts.r('/')
       else
-        render_view :edit
+        respond(view_file('admin/posts/edit'))
       end
     end
 

@@ -1,15 +1,19 @@
 #
 # Blogaze
-# Copyright (C) 2011 Jack Polgar
+# Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
+# @license http://opensource.org/licenses/BSD-3-Clause
 #
 
 class Posts < Controller
   def view(slug)
     @post = Post.filter(:slug => slug).first
+    return respond(view_file('pages/notfound')) if @post.nil?
+
+    # Set title
     @title = @post.title + ' - ' + @settings[:title]
-    
+
     # Instead of a controller just for comment creation
     # let's just put it here, that way we can display
     # errors with the new comment form.
@@ -29,5 +33,7 @@ class Posts < Controller
     else
       @comment = Comment.new
     end
+
+    respond(view_file('posts/view'))
   end
 end

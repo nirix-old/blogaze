@@ -1,8 +1,9 @@
 #
 # Blogaze
-# Copyright (C) 2011 Jack Polgar
+# Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
+# @license http://opensource.org/licenses/BSD-3-Clause
 #
 
 require 'rubygems'
@@ -10,6 +11,7 @@ require 'ramaze'
 require 'sequel'
 require 'sequel/extensions/inflector'
 require 'time-lord'
+require './lib/theme'
 
 # Config!
 require __DIR__('config/config')
@@ -23,9 +25,8 @@ Ramaze.options.roots = [__DIR__]
 # Get the database config
 require __DIR__('config/database')
 
-# Set layout and view directories to 'themes/default'
-Ramaze.options.layouts = ["themes/default/layouts"]
-Ramaze.options.views = ["themes/default"]
+# Load default theme
+require './themes/default'
 
 # This is a total hack to get {blah].ago_in_words
 # available on all numbers instead of having to add
