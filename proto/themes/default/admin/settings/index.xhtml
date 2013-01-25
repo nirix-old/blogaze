@@ -1,7 +1,7 @@
 <div id="page_content">
   <h2 id="page-title">Settings</h2>
   <div class="content">
-    <form action="#{Blogaze::Admin::Settings.r('save')}" method="post" class="tabular">
+    <form action="#{Blogaze::Controllers::Admin::Settings.r('save')}" method="post" class="tabular">
       <p>
         <label>Blog Title</label>
         <input type="text" name="settings[title]" value="#{@settings[:title]}">

@@ -33,7 +33,7 @@ module Blogaze
     # Loads routes and controllers
     def start
       require 'blogaze/routes'
-      require 'blogaze/controller/init'
+      require 'blogaze/controllers/init'
     end
   end
 end
