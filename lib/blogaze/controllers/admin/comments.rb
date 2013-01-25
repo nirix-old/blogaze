@@ -16,7 +16,7 @@ module Blogaze
         # List comments
         #
         def index
-          @comments = Comment.all
+          @comments = ::Blogaze::Models::Comment.all
           respond(view_file('admin/comments/index'))
         end
 
@@ -24,7 +24,7 @@ module Blogaze
         # Approve comment
         #
         def approve(comment_id)
-          Comment[comment_id].update(:in_moderation => 0).save
+          ::Blogaze::Models::Comment[comment_id].update(:in_moderation => 0).save
           flash[:success] = "Comment approved"
           redirect r('/')
         end
@@ -33,7 +33,7 @@ module Blogaze
         # Delete comment
         #
         def delete(comment_id)
-          Comment[comment_id].delete
+          ::Blogaze::Models::Comment[comment_id].delete
           flash[:success] = "Comment deleted"
           redirect r('/')
         end

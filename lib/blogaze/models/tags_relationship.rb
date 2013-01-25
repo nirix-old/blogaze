@@ -7,7 +7,9 @@
 #
 
 module Blogaze
-  class TagsRelationship < Sequel::Model
-    many_to_one :tag
-  end
-end
+  module Models
+    class TagsRelationship < Sequel::Model
+      many_to_one :tag
+    end # TagsRelationship
+  end # Models
+end # Blogaze

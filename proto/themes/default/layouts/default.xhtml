@@ -16,7 +16,7 @@
         <h1><a href="/">#{@settings[:title]}</a></h1>
         <nav>
           <ul>
-          <?r ::Blogaze::Page.filter(:on_menu => 1).all.each do |page| ?>
+          <?r ::Blogaze::Models::Page.filter(:on_menu => 1).all.each do |page| ?>
           <li><a href="/#{page.slug}">#{page.title}</a></li>
           <?r end ?>
           <?r if session[:logged_in] ?>

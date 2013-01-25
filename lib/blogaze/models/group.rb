@@ -7,7 +7,9 @@
 #
 
 module Blogaze
-  class Group < Sequel::Model
-    one_to_many :user
-  end
-end
+  module Models
+    class Group < Sequel::Model
+      one_to_many :user
+    end # Group
+  end # Models
+end # Blogaze

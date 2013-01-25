@@ -16,7 +16,7 @@ module Blogaze
         # Page listing
         #
         def index
-          @pages = Page.order(:title.asc).all
+          @pages = ::Blogaze::Models::Page.order(:title.asc).all
           respond(view_file('admin/pages/index'))
         end
 
@@ -25,7 +25,7 @@ module Blogaze
         #
         def new
           @title = "New Page - Pages - Admin - #{@settings[:title]}"
-          @page = Page.new
+          @page = ::Blogaze::Models::Page.new
           respond(view_file('admin/pages/new'))
         end
 
@@ -41,7 +41,7 @@ module Blogaze
             :on_menu => request[:on_menu]
           }
 
-          @page = Page.new(data)
+          @page = ::Blogaze::Models::Page.new(data)
 
           if @page.valid?
             @page.save
@@ -57,7 +57,7 @@ module Blogaze
         #
         def edit(page_id)
           @title = "Edit Page - Pages - Admin - #{@settings[:title]}"
-          @page = Page[page_id]
+          @page = ::Blogaze::Models::Page[page_id]
           respond(view_file('admin/pages/edit'))
         end
 
@@ -66,7 +66,7 @@ module Blogaze
         #
         def save(page_id)
           @title = "Edit Page - Pages - Admin - #{@settings[:title]}"
-          @page = Page[page_id]
+          @page = ::Blogaze::Models::Page[page_id]
           @page.title = request[:title]
           @page.slug = request[:slug]
           @page.body = request[:body]
@@ -85,7 +85,7 @@ module Blogaze
         # Delete page
         #
         def delete(page_id)
-          Page[page_id].delete
+          P::Blogaze::Models::age[page_id].delete
           flash[:success] = "Page deleted successfully"
           redirect Pages.r('/')
         end

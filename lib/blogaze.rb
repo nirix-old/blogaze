@@ -27,7 +27,7 @@ module Blogaze
     # Sets database and loads models
     def database=(database)
       @database = database
-      require 'blogaze/model/init'
+      require 'blogaze/models/init'
     end
 
     # Loads routes and controllers

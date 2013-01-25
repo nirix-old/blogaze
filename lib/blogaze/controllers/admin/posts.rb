@@ -38,7 +38,7 @@ module Blogaze
         #
         def index
           @title = "Posts - Admin - #{@settings[:title]}"
-          @posts = Post.order(:id.desc).all
+          @posts = ::Blogaze::Models::Post.order(:id.desc).all
           respond(view_file('admin/posts/index'))
         end
 
@@ -47,7 +47,7 @@ module Blogaze
         #
         def new
           @title = "New Post - Posts - Admin - #{@settings[:title]}"
-          @post = Post.new
+          @post = ::Blogaze::Models::Post.new
           respond(view_file('admin/posts/new'))
         end
 
@@ -62,7 +62,7 @@ module Blogaze
             :user_id => @userinfo.id,
             :post_tags => request[:post_tags].is_a?(String) ? request[:post_tags].gsub(', ', ',').split(',') : []
           }
-          @post = Post.new(data)
+          @post = ::Blogaze::Models::Post.new(data)
 
           if @post.valid?
             @post.save
@@ -79,7 +79,7 @@ module Blogaze
         #
         def edit(post_id)
           @title = "Edit Post - Posts - Admin - #{@settings[:title]}"
-          @post = Post[post_id]
+          @post = ::Blogaze::Models::Post[post_id]
 
           post_tags = []
           @post.tags.each do |tag|
@@ -95,7 +95,7 @@ module Blogaze
         #
         def save(post_id)
           @title = "Edit Post - Posts - Admin - #{@settings[:title]}"
-          @post = Post[post_id]
+          @post = ::Blogaze::Models::Post[post_id]
           @post.title = request[:title]
           @post.body = request[:body]
           @post.post_tags = request[:post_tags].is_a?(String) ? request[:post_tags].gsub(', ', ',').split(',') : []
@@ -113,7 +113,7 @@ module Blogaze
         # Delete post
         #
         def delete(post_id)
-          Post[post_id].delete
+          ::Blogaze::Models::Post[post_id].delete
           flash[:success] = "Post deleted successfully"
           redirect Posts.r('/')
         end

@@ -25,7 +25,7 @@ module Blogaze
         end
 
         # Get the data and paginate it.
-        data = Post.order(:published_at.desc)
+        data = ::Blogaze::Models::Post.order(:published_at.desc)
         @posts = paginate(data, :limit => @settings[:posts_per_page].to_i, :page => page.to_i)
 
         respond(view_file(:index))

@@ -13,7 +13,7 @@ module Blogaze
 
       def new
         @title = "Register - #{@settings[:title]}"
-        @user = User.new
+        @user = ::Blogaze::Models::User.new
         respond(view_file('users/new'))
       end
 
@@ -26,7 +26,7 @@ module Blogaze
           :group_id => 3
         }
 
-        @user = User.new(data)
+        @user = ::Blogaze::Models::User.new(data)
 
         if @user.valid?
           @user.save

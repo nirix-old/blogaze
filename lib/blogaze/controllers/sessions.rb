@@ -24,7 +24,7 @@ module Blogaze
       #
       def create
         @title = "Login - #{@settings[:title]}"
-        @get_user = User[:username => request[:username]]
+        @get_user = ::Blogaze::Models::User[:username => request[:username]]
 
         if @get_user.respond_to?('password') and @get_user.password == Digest::SHA1.hexdigest(request[:password])
           session[:logged_in] = true

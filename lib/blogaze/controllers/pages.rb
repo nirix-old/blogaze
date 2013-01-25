@@ -23,7 +23,7 @@ module Blogaze
         # forward slashes from the begning and end of the url.
         slug = slug.chomp("/").reverse.chomp("/").reverse
 
-        @page = Page[:slug => slug]
+        @page = ::Blogaze::Models::Page[:slug => slug]
 
         # Check if the page exists, if not render the
         # not found page.

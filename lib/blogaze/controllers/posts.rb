@@ -15,7 +15,7 @@ module Blogaze
        # View post
        #
       def view(slug)
-        @post = Post.filter(:slug => slug).first
+        @post = ::Blogaze::Models::Post.filter(:slug => slug).first
         return respond(view_file('pages/notfound')) if @post.nil?
 
         # Set title
@@ -31,14 +31,14 @@ module Blogaze
             :body => request[:body],
             :in_moderation => @settings[:moderate_comments]
           }
-          @comment = Comment.new(data)
+          @comment = ::Blogaze::Models::Comment.new(data)
           if @comment.valid?
             @comment.save
             flash[:success] = "Your comment has been posted"
             redirect @post.href
           end
         else
-          @comment = Comment.new
+          @comment = ::Blogaze::Models::Comment.new
         end
 
         respond(view_file('posts/view'))

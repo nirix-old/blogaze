@@ -13,13 +13,13 @@
         <?r end ?>
       </div>
       <?r end ?>
-      By #{@post.user.username}, <abbr title="#{Time.at(@post.published_at)}">#{@post.published_at.ago_in_words}</abbr>, #{@post.comment.count} comments
+      By #{@post.user.username}, <abbr title="#{Time.at(@post.published_at)}">#{@post.published_at.ago_in_words}</abbr>, #{@post.comments.count} comments
     </footer>
 </article>
 
 <section id="comments">
   <h3><a name="comments" class="no-href">Comments</a></h3>
-  <?r @post.comment.each do |comment| ?>
+  <?r @post.comments.each do |comment| ?>
   <div class="comment">
     <h4>#{comment.author}, #{comment.created_at.ago_in_words}</h4>
     <div class="content">

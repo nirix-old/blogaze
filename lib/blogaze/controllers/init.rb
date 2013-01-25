@@ -17,7 +17,7 @@ module Blogaze
 
       # Get user info
       if session[:logged_in]
-        @userinfo = User[1]
+        @userinfo = ::Blogaze::Models::User[1]
       end
 
       # Get settings

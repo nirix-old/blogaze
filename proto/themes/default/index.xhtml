@@ -19,7 +19,7 @@
         <?r end ?>
       </div>
       <?r end ?>
-      By #{post.user.username}, <abbr title="#{Time.at(post.published_at)}">#{post.published_at.ago_in_words}</abbr>, <a href="#{post.href}#comments">#{post.comment.count} comments</a>
+      By #{post.user.username}, <abbr title="#{Time.at(post.published_at)}">#{post.published_at.ago_in_words}</abbr>, <a href="#{post.href}#comments">#{post.comments.count} comments</a>
     </footer>
 </article>
 <?r end ?>
