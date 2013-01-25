@@ -113,7 +113,9 @@ module Blogaze
         # Delete post
         #
         def delete(post_id)
-          ::Blogaze::Models::Post[post_id].delete
+          post = ::Blogaze::Models::Post[post_id]
+          post.delete
+          ::Blogaze::Models::TagsRelationship.where(:object_type => 'post', :object_id => post.id).delete
           flash[:success] = "Post deleted successfully"
           redirect Posts.r('/')
         end
