@@ -21,4 +21,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'sequel', ['~> 3.43.0']
   gem.add_dependency 'maruku', ['~> 0.6.1']
   gem.add_dependency 'time-lord', ['~> 0.2.5']
+  gem.add_dependency 'shebang', ['~> 0.1']
 end
