@@ -10,6 +10,5 @@ require 'blogaze'
 
 require __DIR__('config/config')
 require __DIR__('config/database')
-require __DIR__('themes/default')
 
 Blogaze.start

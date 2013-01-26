@@ -32,6 +32,7 @@ module Blogaze
 
     # Loads routes and controllers
     def start
+      require 'blogaze/themes/default'
       require 'blogaze/routes'
       require 'blogaze/controllers/init'
     end
