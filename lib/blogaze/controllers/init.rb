@@ -7,40 +7,46 @@
 #
 
 module Blogaze
-  class Controller < Ramaze::Controller
-    layout :default
-    helper :xhtml, :maruku, :blue_form, :formatting
-    engine :etanni
+  module Controllers
+    class Controller < Ramaze::Controller
+      layout :default
+      helper :xhtml, :maruku, :blue_form, :formatting
+      engine :etanni
 
-    def initialize
-      super
+      def initialize
+        super
 
-      # Get user info
-      if session[:logged_in]
-        @userinfo = ::Blogaze::Models::User[1]
+        # Get user info
+        if session[:logged_in]
+          @userinfo = ::Blogaze::Models::User[1]
+        end
+
+        # Get settings
+        get_settings
+
+        # Set theme
+        Theme.use @settings[:theme]
       end
 
-      # Get settings
-      get_settings
-
-      Theme.use @settings[:theme]
-    end
-
-    def view_file(path)
-      path = path.to_s if not path.is_a?(String)
-      view_path = File.join(Theme.current.templates, "#{path}.xhtml")
-      layout_path = File.join(Theme.current.templates + "/layouts/#{ancestral_trait[:layout]}.xhtml")
-      return render_file(layout_path, :content => render_file(view_path))
-    end
-
-    def get_settings
-      @settings = {}
-      Blogaze.database[:settings].all.each do |setting|
-        @settings[setting[:setting].to_sym] = setting[:value]
+      ##
+      # Renders the view with the set layout
+      #
+      def view_file(path)
+        path = path.to_s if not path.is_a?(String)
+        view_path = File.join(Theme.current.templates, "#{path}.xhtml")
+        layout_path = File.join(Theme.current.templates + "/layouts/#{ancestral_trait[:layout]}.xhtml")
+        return render_file(layout_path, :content => render_file(view_path))
       end
-    end
-  end
-end
+
+      def get_settings
+        @settings = {}
+        Blogaze.database[:settings].all.each do |setting|
+          @settings[setting[:setting].to_sym] = setting[:value]
+        end
+      end
+    end # Controller
+  end # Controllers
+end # Blogaze
 
 # Here go your requires for subclasses of Controller:
 Dir.glob(File.dirname(__FILE__) + '/*.rb').each do |controller|

@@ -9,7 +9,7 @@
 module Blogaze
   module Controllers
     module Admin
-      class Controller < ::Blogaze::Controller
+      class Controller < ::Blogaze::Controllers::Controller
         layout 'admin'
         helper :blue_form
 
