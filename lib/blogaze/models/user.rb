@@ -14,6 +14,14 @@ module Blogaze
       one_to_many :post
       many_to_one :group
 
+      ##
+      # Check if the users password matches
+      # the supplied password.
+      #
+      def check_password(password)
+        BCrypt::Password.new(self.password) == password
+      end
+
       def validate
         super
 
@@ -32,7 +40,7 @@ module Blogaze
       end
 
       def before_create
-        self.password = Digest::SHA1.hexdigest(self.password)
+        self.password = BCrypt::Password.create(self.password)
         self.group_id = 3
       end
 

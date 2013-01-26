@@ -24,9 +24,9 @@ module Blogaze
       #
       def create
         @title = "Login - #{@settings[:title]}"
-        @get_user = ::Blogaze::Models::User[:username => request[:username]]
+        @get_user = ::Blogaze::Models::User.where(:username => request[:username]).first
 
-        if @get_user.respond_to?('password') and @get_user.password == Digest::SHA1.hexdigest(request[:password])
+        if @get_user and @get_user.check_password(request[:password])
           session[:logged_in] = true
           session[:user_id] = @get_user.id
           redirect Ramaze.options.prefix

@@ -16,7 +16,7 @@ module Blogaze
         def initialize
           super
 
-          if !@userinfo.respond_to?('group') or !@userinfo.group.is_admin
+          if !@userinfo.respond_to?('group') or @userinfo.group.is_admin != 1
             redirect '/login'
           end
         end

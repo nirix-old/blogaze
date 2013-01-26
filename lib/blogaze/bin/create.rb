@@ -52,7 +52,7 @@ module Blogaze
           puts
           puts "The default admin account is:"
           puts "  Username: admin"
-          puts "  Password: myadmin"
+          puts "  Password: admin"
           puts
         end
       end

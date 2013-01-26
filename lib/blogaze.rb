@@ -10,6 +10,7 @@ require 'ramaze'
 require 'sequel'
 require 'sequel/extensions/inflector'
 require 'time-lord'
+require 'bcrypt'
 require "blogaze/version"
 require "blogaze/theme"
 

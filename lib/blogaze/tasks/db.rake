@@ -33,7 +33,7 @@ namespace :db do
 
     # Admin user
     puts "Creating admin user"
-    Blogaze.database[:users].insert(:username => 'Admin', :password => 'bc750014cb3cf5a86b4851b9ca33027537b3fb85', :email => 'admin@example.com', :group_id => '1')
+    Blogaze.database[:users].insert(:username => 'Admin', :password => '$2a$10$pWIXaTMi8eK5NPqRm2xpROEiTlFxj0H72Ebb5MaPK3OnAQqcWgfPe', :email => 'admin@example.com', :group_id => '1')
 
     # First post
     Blogaze.database[:posts].insert(:title => 'Welcome', :slug => 'welcome', :body => '**Welcome** to _Blogaze!_', :published_at => Time.now.to_i, :created_at => Time.now.to_i, :user_id => 1)
