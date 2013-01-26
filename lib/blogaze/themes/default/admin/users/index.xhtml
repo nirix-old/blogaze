@@ -1,0 +1,19 @@
+<div id="page_content">
+  <h2 id="page-title">Users</h2>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?r @users.each do |user| ?>
+      <tr>
+        <td>#{a user.username, :edit, user.id}</td>
+        <td>#{a 'Edit', :edit, user.id}, #{a 'Delete', :delete, user.id}</td>
+      </tr>
+    <?r end ?>
+    </tbody>
+  </table>
+</div>

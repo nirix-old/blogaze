@@ -28,5 +28,4 @@ Todo
 
 Things that still need to be done.
 
-1. User manager
-2. Profile manager
+1. Profile manager
