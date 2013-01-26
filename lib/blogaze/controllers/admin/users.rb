@@ -13,6 +13,7 @@ module Blogaze
         map '/admin/users'
 
         before :edit, :save do
+          @title = "Edit User - Users - Admin - #{@settings[:title]}"
           @groups = {}
           ::Blogaze::Models::Group.all.each do |group|
             @groups[group.id] = group.name
@@ -23,6 +24,7 @@ module Blogaze
         # Lists users
         #
         def index
+          @title = "Users - Admin - #{@settings[:title]}"
           @users = ::Blogaze::Models::User.all
           respond(view_file('admin/users/index'))
         end

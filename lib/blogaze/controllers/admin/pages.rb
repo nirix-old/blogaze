@@ -16,6 +16,7 @@ module Blogaze
         # Page listing
         #
         def index
+          @title = "Pages - Admin - #{@settings[:title]}"
           @pages = ::Blogaze::Models::Page.order(:title.asc).all
           respond(view_file('admin/pages/index'))
         end
