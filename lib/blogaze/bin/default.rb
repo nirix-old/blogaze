@@ -21,9 +21,6 @@ module Blogaze
       #
       def initialize
         super
-        puts "Commands"
-        puts "  blogaze create [NAME] - Create a Blogaze installation in [NAME] directory."
-        puts
       end
 
       ##
@@ -31,6 +28,14 @@ module Blogaze
       #
       def index
         help
+      end
+
+      def help
+        puts @option_parser
+        puts
+        puts "Commands"
+        puts "  create [NAME]    Create a Blogaze installation in [NAME] directory."
+        puts
       end
 
       protected
