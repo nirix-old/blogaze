@@ -3,11 +3,14 @@
 # Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
-# @license http://opensource.org/licenses/BSD-3-Clause
+# http://opensource.org/licenses/BSD-3-Clause
 #
 
 module Blogaze
   module Models
+    ##
+    # Post model
+    #
     class Post < Sequel::Model
       attr_accessor :post_tags
       plugin :validation_helpers
@@ -20,12 +23,16 @@ module Blogaze
       ##
       # Returns the URI to the post.
       #
+      # @return [String]
+      #
       def href
         return '/' + Time.at(self.published_at).year.to_s + '/' + Time.at(self.published_at).month.to_s + '/' + self.slug
       end
 
       ##
       # Returns an array of the posts tags.
+      #
+      # @return [Array]
       #
       def tags
         tags = []
@@ -40,11 +47,16 @@ module Blogaze
       ##
       # Returns the partial body of the post.
       #
+      # @return [String]
+      #
       def body_partial
         body = self.body.split('<!-- MORE -->')
         return body[0]
       end
 
+      ##
+      # Validations
+      #
       def validate
         validates_presence [:title, :body, :user_id]
         validates_integer :user_id
@@ -69,6 +81,10 @@ module Blogaze
 
       private
 
+      ##
+      # Creates, updates and removes tags
+      # from the post.
+      #
       def process_tags
         # Names of tags, obviously
         tag_names = []

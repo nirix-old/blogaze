@@ -3,7 +3,7 @@
 # Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
-# @license http://opensource.org/licenses/BSD-3-Clause
+# http://opensource.org/licenses/BSD-3-Clause
 #
 
 module Blogaze
@@ -13,6 +13,10 @@ module Blogaze
       helper :xhtml, :maruku, :blue_form, :formatting
       engine :etanni
 
+      ##
+      # Sherlock: Initializer
+      # Watson: No shit, Sherlock.
+      #
       def initialize
         super
 
@@ -31,6 +35,8 @@ module Blogaze
       ##
       # Renders the view with the set layout
       #
+      # @param [String] path Path to view
+      #
       def view_file(path)
         path = path.to_s if not path.is_a?(String)
         view_path = File.join(Theme.current.templates, "#{path}.xhtml")
@@ -38,6 +44,9 @@ module Blogaze
         return render_file(layout_path, :content => render_file(view_path))
       end
 
+      ##
+      # Load settings from the database.
+      #
       def get_settings
         @settings = {}
         Blogaze.database[:settings].all.each do |setting|

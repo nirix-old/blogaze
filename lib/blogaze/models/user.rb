@@ -3,11 +3,14 @@
 # Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
-# @license http://opensource.org/licenses/BSD-3-Clause
+# http://opensource.org/licenses/BSD-3-Clause
 #
 
 module Blogaze
   module Models
+    ##
+    # User model
+    #
     class User < Sequel::Model
       plugin :validation_helpers
 
@@ -18,6 +21,8 @@ module Blogaze
       # Check if the users password matches
       # the supplied password.
       #
+      # @param [String] password
+      #
       def check_password(password)
         BCrypt::Password.new(self.password) == password
       end
@@ -25,10 +30,15 @@ module Blogaze
       ##
       # Changes the users password.
       #
+      # @param [String] new_password
+      #
       def change_password(new_password)
         self.password = BCrypt::Password.create(new_password)
       end
 
+      ##
+      # Validations
+      #
       def validate
         super
 
@@ -49,9 +59,6 @@ module Blogaze
       def before_create
         self.password = BCrypt::Password.create(self.password)
         self.group_id = 3
-      end
-
-      def before_save
       end
     end # User
   end # Models

@@ -3,7 +3,7 @@
 # Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
-# @license http://opensource.org/licenses/BSD-3-Clause
+# http://opensource.org/licenses/BSD-3-Clause
 #
 
 module Blogaze
@@ -56,6 +56,8 @@ module Blogaze
         ##
         # Edit page
         #
+        # @param [Integer] page_id
+        #
         def edit(page_id)
           @title = "Edit Page - Pages - Admin - #{@settings[:title]}"
           @page = ::Blogaze::Models::Page[page_id]
@@ -64,6 +66,8 @@ module Blogaze
 
         ##
         # Save page
+        #
+        # @param [Integer] page_id
         #
         def save(page_id)
           @title = "Edit Page - Pages - Admin - #{@settings[:title]}"
@@ -84,6 +88,8 @@ module Blogaze
 
         ##
         # Delete page
+        #
+        # @param [Integer] page_id
         #
         def delete(page_id)
           P::Blogaze::Models::age[page_id].delete

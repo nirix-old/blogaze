@@ -3,7 +3,7 @@
 # Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
-# @license http://opensource.org/licenses/BSD-3-Clause
+# http://opensource.org/licenses/BSD-3-Clause
 #
 
 module Blogaze
@@ -14,10 +14,10 @@ module Blogaze
       ##
       # View page
       #
+      # @param [String] slug Page slug
+      #
       def view(slug = nil)
-        if slug == nil
-          slug = request.env["REQUEST_PATH"]
-        end
+        slug = request.env["REQUEST_PATH"] if slug.nil?
 
         # Chomp chomp chomp, let's trim any unwanted
         # forward slashes from the begning and end of the url.

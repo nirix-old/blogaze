@@ -3,7 +3,7 @@
 # Copyright (C) 2011-2013 Jack Polgar
 #
 # Blogaze is released under the BSD 3-clause license.
-# @license http://opensource.org/licenses/BSD-3-Clause
+# http://opensource.org/licenses/BSD-3-Clause
 #
 
 module Blogaze
@@ -12,6 +12,7 @@ module Blogaze
       class Posts < Controller
         map '/admin/posts'
 
+        # Make sure the user has permission to create posts
         before :new, :create do
           if !@userinfo.group.create_posts
             flash[:error] = "You don't have permission to do that."
@@ -19,6 +20,7 @@ module Blogaze
           end
         end
 
+        # Make sure the user has permission to edit posts
         before :edit, :save do
           if !@userinfo.group.edit_posts
             flash[:error] = "You don't have permission to do that."
@@ -26,6 +28,7 @@ module Blogaze
           end
         end
 
+        # Make sure the user has permission to delete posts
         before :delete do
           if !@userinfo.group.delete_posts
             flash[:error] = "You don't have permission to do that."
@@ -77,6 +80,8 @@ module Blogaze
         ##
         # Edit post
         #
+        # @param [Integer] post_id
+        #
         def edit(post_id)
           @title = "Edit Post - Posts - Admin - #{@settings[:title]}"
           @post = ::Blogaze::Models::Post[post_id]
@@ -92,6 +97,8 @@ module Blogaze
 
         ##
         # Save post
+        #
+        # @param [Integer] post_id
         #
         def save(post_id)
           @title = "Edit Post - Posts - Admin - #{@settings[:title]}"
@@ -111,6 +118,8 @@ module Blogaze
 
         ##
         # Delete post
+        #
+        # @param [Integer] post_id
         #
         def delete(post_id)
           post = ::Blogaze::Models::Post[post_id]
