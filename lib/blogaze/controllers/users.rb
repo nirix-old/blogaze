@@ -11,12 +11,18 @@ module Blogaze
     class Users < Controller
       map '/users'
 
+      ##
+      # Register form
+      #
       def new
         @title = "Register - #{@settings[:title]}"
         @user = ::Blogaze::Models::User.new
         respond(view_file('users/new'))
       end
 
+      ##
+      # Create user
+      #
       def create
         @title = "Register - #{@settings[:title]}"
         data = {
@@ -28,6 +34,7 @@ module Blogaze
 
         @user = ::Blogaze::Models::User.new(data)
 
+        # Check for errors
         if @user.valid?
           @user.save
           flash[:success] = "Account created, you may now login"
