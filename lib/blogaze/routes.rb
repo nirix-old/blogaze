@@ -12,11 +12,11 @@ module Blogaze
 
   # Post routes
   ::Ramaze::Route[/^\/[0-9]+\/[0-9]+\/([\w\.\-]+)$/] = '/posts/view/%s'
-  ::Ramaze::Route[/\/page\/([0-9]+)/] = '/%d'
+  ::Ramaze::Route[/^\/page\/([0-9]+)$/] = '/%d'
 
   # Tag routes
   ::Ramaze::Route[/^\/tags\/([\w]+)$/] = '/posts/tag/%s'
-  #::Ramaze::Route[/^\/tags\/([\w]+)\/page\/([0-9]+)$/] = '/posts/tag/%s/%d'
+  ::Ramaze::Route[/^\/tags\/([\w]+)\/page\/([0-9]+)$/] = '/posts/tag/%s/%d'
 
   # User routes
   ::Ramaze::Route['/login'] = '/sessions/new'
