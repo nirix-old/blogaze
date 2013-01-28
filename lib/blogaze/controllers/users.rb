@@ -36,6 +36,11 @@ module Blogaze
           respond(view_file('users/new'))
         end
       end
+
+      def profile
+        return respond(view_file('sessions/new')) unless session[:logged_in]
+        respond(view_file('users/profile'))
+      end
     end # Users
   end # Controllers
 end # Blogaze

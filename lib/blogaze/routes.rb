@@ -23,6 +23,7 @@ module Blogaze
   ::Ramaze::Route['/logout'] = '/sessions/destroy'
   ::Ramaze::Route['/register'] = '/users/new'
   ::Ramaze::Route['/users/create'] = '/users/create'
+  ::Ramaze::Route['/profile'] = '/users/profile'
   ::Ramaze::Route[/\/sessions(.*)/] = '/sessions%s'
 
   # Page routes
