@@ -8,7 +8,7 @@
         <?r end ?>
       </div>
     <?r end ?>
-    <div class="new-post-form tabular">
+    <div class="new-page-form tabular">
        #{
         form_for(@page, :method => :post, :action => '/admin/pages/save/' + @page.id.to_s) do |f|
           f.input_text 'Title', :title

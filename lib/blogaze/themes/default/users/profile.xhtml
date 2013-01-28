@@ -8,7 +8,7 @@
         <?r end ?>
       </div>
     <?r end ?>
-    <div class="profile-form tabular">
+    <div class="centered-form tabular">
     #{
       form_for(@userinfo, :method => :post, :action => '/users/save') do |f|
         f.input_text 'Email', :email
