@@ -22,6 +22,13 @@ module Blogaze
         BCrypt::Password.new(self.password) == password
       end
 
+      ##
+      # Changes the users password.
+      #
+      def change_password(new_password)
+        self.password = BCrypt::Password.create(new_password)
+      end
+
       def validate
         super
 

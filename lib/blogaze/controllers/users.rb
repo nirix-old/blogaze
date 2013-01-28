@@ -46,9 +46,35 @@ module Blogaze
         end
       end
 
+      ##
+      # "UserCP"
+      #
       def profile
         return respond(view_file('sessions/new')) unless session[:logged_in]
         respond(view_file('users/profile'))
+      end
+
+      ##
+      # Save profile
+      #
+      def save
+        return redirect('/') unless request.post?
+
+        # Set email
+        @userinfo.email = request[:email]
+
+        # Changing password?
+        if not request[:new_password].empty?
+          @userinfo.change_password(request[:new_password])
+        end
+
+        # Check for errors
+        if @userinfo.valid?
+          @userinfo.save
+          redirect Users.r('/profile')
+        else
+          respond(view_file('users/profile'))
+        end
       end
     end # Users
   end # Controllers

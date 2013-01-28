@@ -1,0 +1,21 @@
+<div id="page_content">
+  <h2 id="page-title">My Profile</h2>
+  <div class="content">
+    <?r if @userinfo.errors.count > 0 ?>
+      <div class="message error">
+        <?r @userinfo.errors.each do |k, v| ?>
+          #{k} #{v.first}<br />
+        <?r end ?>
+      </div>
+    <?r end ?>
+    <div class="profile-form tabular">
+    #{
+      form_for(@userinfo, :method => :post, :action => '/users/save') do |f|
+        f.input_text 'Email', :email
+        f.input_password 'New Password', :new_password
+        f.submit "Save", :class => "submit-btn"
+      end
+    }
+    </div>
+  </div>
+</div>
