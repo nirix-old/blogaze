@@ -24,6 +24,8 @@ module Blogaze
       # Create user
       #
       def create
+        return redirect('/') unless request.post?
+
         @title = "Register - #{@settings[:title]}"
         data = {
           :username => request[:username],
