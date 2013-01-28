@@ -30,6 +30,18 @@ module Blogaze
 
         # Set theme
         Theme.use @settings[:theme]
+
+        # Page title
+        @title = [@settings[:title]]
+      end
+
+      ##
+      # Adds the passed title to be added to the page title.
+      #
+      # @param [String] title
+      #
+      def title(title)
+        @title.push title
       end
 
       ##

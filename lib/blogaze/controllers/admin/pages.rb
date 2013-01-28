@@ -12,11 +12,17 @@ module Blogaze
       class Pages < Controller
         map '/admin/pages'
 
+        def initialize
+          super
+
+          # Set title
+          title "Pages"
+        end
+
         ##
         # Page listing
         #
         def index
-          @title = "Pages - Admin - #{@settings[:title]}"
           @pages = ::Blogaze::Models::Page.order(:title.asc).all
           respond(view_file('admin/pages/index'))
         end
@@ -25,7 +31,7 @@ module Blogaze
         # New page form
         #
         def new
-          @title = "New Page - Pages - Admin - #{@settings[:title]}"
+          title "New Page"
           @page = ::Blogaze::Models::Page.new
           respond(view_file('admin/pages/new'))
         end
@@ -34,7 +40,7 @@ module Blogaze
         # Create page
         #
         def create
-          @title = "New Page - Pages - Admin - #{@settings[:title]}"
+          title "New Page"
           data = {
             :title => request[:title],
             :slug => request[:slug],
@@ -59,7 +65,7 @@ module Blogaze
         # @param [Integer] page_id
         #
         def edit(page_id)
-          @title = "Edit Page - Pages - Admin - #{@settings[:title]}"
+          title "Edit Page"
           @page = ::Blogaze::Models::Page[page_id]
           respond(view_file('admin/pages/edit'))
         end
@@ -70,7 +76,7 @@ module Blogaze
         # @param [Integer] page_id
         #
         def save(page_id)
-          @title = "Edit Page - Pages - Admin - #{@settings[:title]}"
+          title "Edit Page"
           @page = ::Blogaze::Models::Page[page_id]
           @page.title = request[:title]
           @page.slug = request[:slug]

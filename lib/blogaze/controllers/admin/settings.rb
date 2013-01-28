@@ -16,6 +16,9 @@ module Blogaze
         # Settings form
         #
         def index
+          # Set title
+          title "Settings"
+
           # Get themes
           @themes = []
 

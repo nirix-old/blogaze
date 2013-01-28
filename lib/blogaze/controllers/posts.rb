@@ -22,7 +22,7 @@ module Blogaze
         return respond(view_file('pages/notfound')) if @post.nil?
 
         # Set title
-        @title = @post.title + ' - ' + @settings[:title]
+        title @post.title
 
         # Instead of a controller just for comment creation
         # let's just put it here, that way we can display
@@ -50,9 +50,15 @@ module Blogaze
       ##
       # Lists posts belonging to the tag.
       #
+      # @param [String]  slug Tag slug
+      # @param [Integer] page Page number
+      #
       def tag(slug, page = 1)
         @tag = ::Blogaze::Models::Tag[:slug => slug]
         return respond(view_file('pages/notfound')) if @tag.nil?
+
+        # Set title
+        title "Posts tagged #{@tag.name}"
 
         # Get relationships with posts and put the post IDs
         # into an array for use when selecting posts to be

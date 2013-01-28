@@ -16,6 +16,10 @@ module Blogaze
         def initialize
           super
 
+          # Set AdminCP title
+          title "Admin"
+
+          # Make sure the user is logged in and has permission
           if !@userinfo.respond_to?('group') or @userinfo.group.is_admin != 1
             redirect '/login'
           end

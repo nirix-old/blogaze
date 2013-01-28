@@ -16,6 +16,7 @@ module Blogaze
         # List comments
         #
         def index
+          title "Comments"
           @comments = ::Blogaze::Models::Comment.all
           respond(view_file('admin/comments/index'))
         end

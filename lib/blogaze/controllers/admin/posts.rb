@@ -12,8 +12,16 @@ module Blogaze
       class Posts < Controller
         map '/admin/posts'
 
+        def initialize
+          super
+
+          # Set title
+          title "Posts"
+        end
+
         # Make sure the user has permission to create posts
         before :new, :create do
+          title "New Post"
           if !@userinfo.group.create_posts
             flash[:error] = "You don't have permission to do that."
             redirect '/login'
@@ -22,6 +30,7 @@ module Blogaze
 
         # Make sure the user has permission to edit posts
         before :edit, :save do
+          title "Edit Page"
           if !@userinfo.group.edit_posts
             flash[:error] = "You don't have permission to do that."
             redirect '/login'
@@ -40,7 +49,6 @@ module Blogaze
         # Post listing
         #
         def index
-          @title = "Posts - Admin - #{@settings[:title]}"
           @posts = ::Blogaze::Models::Post.order(:id.desc).all
           respond(view_file('admin/posts/index'))
         end
@@ -49,7 +57,6 @@ module Blogaze
         # New post form
         #
         def new
-          @title = "New Post - Posts - Admin - #{@settings[:title]}"
           @post = ::Blogaze::Models::Post.new
           respond(view_file('admin/posts/new'))
         end
@@ -58,7 +65,6 @@ module Blogaze
         # Create post
         #
         def create
-          @title = "New Post - Posts - Admin - #{@settings[:title]}"
           data = {
             :title => request[:title],
             :body => request[:body],
@@ -83,7 +89,6 @@ module Blogaze
         # @param [Integer] post_id
         #
         def edit(post_id)
-          @title = "Edit Post - Posts - Admin - #{@settings[:title]}"
           @post = ::Blogaze::Models::Post[post_id]
 
           post_tags = []
@@ -101,7 +106,6 @@ module Blogaze
         # @param [Integer] post_id
         #
         def save(post_id)
-          @title = "Edit Post - Posts - Admin - #{@settings[:title]}"
           @post = ::Blogaze::Models::Post[post_id]
           @post.title = request[:title]
           @post.body = request[:body]

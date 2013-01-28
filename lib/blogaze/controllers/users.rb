@@ -15,7 +15,7 @@ module Blogaze
       # Register form
       #
       def new
-        @title = "Register - #{@settings[:title]}"
+        title "Register"
         @user = ::Blogaze::Models::User.new
         respond(view_file('users/new'))
       end
@@ -26,7 +26,7 @@ module Blogaze
       def create
         return redirect('/') unless request.post?
 
-        @title = "Register - #{@settings[:title]}"
+        title "Register"
         data = {
           :username => request[:username],
           :password => request[:password],
@@ -51,6 +51,7 @@ module Blogaze
       #
       def profile
         return respond(view_file('sessions/new')) unless session[:logged_in]
+        title "Profile"
         respond(view_file('users/profile'))
       end
 
@@ -59,6 +60,9 @@ module Blogaze
       #
       def save
         return redirect('/') unless request.post?
+
+        # Set title
+        title "Profile"
 
         # Set email
         @userinfo.email = request[:email]

@@ -19,9 +19,7 @@ module Blogaze
         # Check if we should change the title to include
         # what page we're on.
         if page.to_i > 1
-          @title = "Page #{page} - #{@settings[:title]}"
-        else
-          @title = @settings[:title]
+          title "Page #{page}"
         end
 
         # Get the data and paginate it.

@@ -15,7 +15,7 @@ module Blogaze
       # Login page
       #
       def new
-        @title = "Login - #{@settings[:title]}"
+        title "Login"
         respond(view_file('sessions/new'))
       end
 
@@ -23,7 +23,7 @@ module Blogaze
       # Create session
       #
       def create
-        @title = "Login - #{@settings[:title]}"
+        title "Login"
         @get_user = ::Blogaze::Models::User.where(:username => request[:username]).first
 
         if @get_user and @get_user.check_password(request[:password])

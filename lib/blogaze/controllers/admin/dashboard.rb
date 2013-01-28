@@ -16,7 +16,6 @@ module Blogaze
         # Admin index
         #
         def index
-          @title = "Admin - #{@settings[:title]}"
           respond(view_file('admin/index'))
         end
       end # Dashboard

@@ -23,14 +23,16 @@ module Blogaze
         # forward slashes from the begning and end of the url.
         slug = slug.chomp("/").reverse.chomp("/").reverse
 
+        # Get page
         @page = ::Blogaze::Models::Page[:slug => slug]
 
         # Check if the page exists, if not render the
         # not found page.
-        if !@page.respond_to?('title')
+        if @page.nil?
+          title "Not Found"
           respond(view_file('pages/notfound'))
         else
-          @title = "#{@page.title} - #{@settings[:title]}"
+          title @page.title
           respond(view_file('pages/page'))
         end
       end
